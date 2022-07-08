@@ -1,4 +1,4 @@
-{% extends 'bases/base.html' %} {% load static %}
+{% extends 'theme/base.html' %} {% load static %}
 <!--  block content -->
 {%block title%} {%if date or category%} {%if date%} Blog - {{date|date:"F Y"}}
 {% endif%} {% if category %} Blog - {{ category }} {% endif %} {% endif %}
