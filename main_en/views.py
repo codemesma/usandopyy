@@ -23,7 +23,7 @@ def error_404_view(request, exception):
 
 
 class Home(ListView):
-    template_name = "bases_en/home.html"
+    template_name = "theme_en/base.html"
     queryset = Categoria.objects.filter(is_active=True).order_by('id')
     context_object_name = "cat"
 
@@ -56,9 +56,9 @@ class Home(ListView):
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
 
-        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:14]
+        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:6]
         context['post'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:3]
-        context['post_banner'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:14]
+        context['post_banner'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:3]
         context['categoria'] = Categoria.objects.all().order_by('name')
         context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 

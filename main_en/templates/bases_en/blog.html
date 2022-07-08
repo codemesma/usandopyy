@@ -1,51 +1,7 @@
-<style>
-  font {
-    color: #212529;
-    font-family: Roboto, sans-serif;
-    font-size: 14px;
-    background-color: #000000;
-    font-weight: 300;
-    line-height: 24px;
-    vertical-align: baseline;
-    letter-spacing: normal;
-    word-spacing: 0px;
-    margin: 0px 0px 0px;
-    padding: 0px;
-    font-style: normal;
-    font-variant: normal;
-    text-transform: none;
-    text-decoration: none solid rgb(33, 37, 41);
-    text-align: left;
-    text-indent: 0px;
-  }
-  a:hover {
-    color: #445879;
-  }
-  h1 {
-    color: #29303b;
-    font-family: "sf pro display", -apple-system, BlinkMacSystemFont, "segoe ui",
-      Roboto, Helvetica, Arial, sans-serif, "apple color emoji",
-      "segoe ui emoji", "segoe ui symbol";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    margin: 0px 0px 0px;
-    text-transform: none;
-    text-decoration: solid rgb(41, 48, 59);
-    text-align: start;
-  }
-
-
-  .card-footer {
-    color: #686f7a;
-    font-size: 12px;
-  }
-</style>
-
 <!--Section: Tutorial -->
 <div class="my-2 " style="background-color: #ffffff">
     <h4 class="my-2 text-left mx-0 px-1 text-white font-weight-bolder py-2 rounded" style="background-color: #39C0ED;">
-      <i class="far fa-clock"></i> Latest Posts Tutorial
+      <i class="far fa-clock"></i> Ultimas Postagens Tutorial
     </h4 >
     <!--Grid row Tutorial -->
     <div class="row px-lg-2 px-md-2 px-sm-4">
@@ -60,7 +16,7 @@
               alt="Responsive image"
               class="img-fluid"
             />
-            <a href="{% url 'tutorial-view_en' t.slug %}">
+            <a href="{% url 'tutorial-view' t.slug %}">
               <div class="mask rgba-white-slight"></div>
             </a>
           </div>
@@ -68,14 +24,14 @@
         <div class="col-lg-7 px-lg-2 px-md-2 px-sm-4 py-0 my-0">
           <!--Excerpt-->
           <div class="py-0 my-lg-0 my-md-0 my-sm-4">
-            <a href="{% url 'tutorial-view_en' t.slug %}">
+            <a href="{% url 'tutorial-view' t.slug %}">
               <h1 class="">
                 {{t.title}}
               </h1>
             </a>
             <div class="text-muted text-left">
               <a
-                href="{% url 'categoria-view_en' t.category.slug  %}"
+                href="{% url 'categoria-view' t.category.slug  %}"
                 class="light-blue-text"
               >
                 <span class="badge unique-color float-left py-1" style="background-color: #39C0ED;"
@@ -103,6 +59,4 @@
     <!--Grid row Tutorial -->
 </div>
 <!--/Section: Tutorial-->
-
-
 

@@ -1,6 +1,7 @@
-{% extends 'bases_en/base.html' %} {% load static %}
+{% extends 'theme/base.html' %} 
+{% load static %}
 <!--  block content -->
-{%block title %} About us {%endblock%} {% block content %}
+{%block title %} Sobre {%endblock%} {% block content %}
 
 <div class="card card-image mt-5 pt-3 z-depth-0" style="background-color: #ffffff">
   <div
@@ -9,22 +10,22 @@
     <div class="container">
       <!-- Content -->
       <div class="row text-center">
-        <div class="col-lg-9 py-0 my-0">
-                <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
+        <div class="col-lg-9 py-0 my-0 ">
+                <div class='z-depth-1' style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
                  padding-bottom: 48px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
                  border-radius: 8px; will-change: transform;">
                   <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-                    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAE_jnTqO_E&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAE-iGVRo4g&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
                   </iframe>
                 </div>
         </div>
 
         <div class="col-lg-9 py-0 my-0">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
+            <div class='z-depth-1' style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
              padding-bottom: 48px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
              border-radius: 8px; will-change: transform;">
               <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAE_jkz4fQ8&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAE_iYcABmQ&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
               </iframe>
             </div>
         </div>
@@ -90,11 +91,6 @@
               distribuir o conteúdo e o código (com as condições descritas
               abaixo).
               <br />
-              A licença para todo o código está sob a licença MIT. Você pode
-              baixar todo o código-fonte do repositório do Github. A licença do
-              conteúdo é Creative Commons Attribution-ShareAlike . Isso
-              significa que você é livre para compartilhar e modificar esses
-              trabalhos, desde que vincule o conteúdo ao seu URL original.
             </div>
           </div>
         </div>
@@ -105,7 +101,7 @@
   </div>
 </div>
 <!-- equipa-->
-{% block equipa %} {% include 'bases_en/equipa.html' %} {% endblock %}
+{% block equipa %} {% include 'bases/equipa.html' %} {% endblock %}
 <!-- /. equipa -->
 {% endblock content %}
 

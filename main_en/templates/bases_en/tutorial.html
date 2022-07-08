@@ -1,17 +1,18 @@
-{% extends 'bases_en/base.html' %} {% load static %}
+{% extends 'theme/base.html' %} 
+{% load static %}
 <!--  block content -->
 
 {% block content %}
 
 <!-- Banner-->
-{% block banner %} {% include 'bases_en/banner.html' %} {% endblock %}
+{% block banner %} {% include 'bases/banner.html' %} {% endblock %}
 <!-- /. Banner -->
 
-<div class="" style="background-color: white;">
+<div class="container" >
     <div class="row ">
         <div class="col-md-12 mb-0 z-depth-0">
             <!-- categoria-->
-            {% block categoria %} {% include 'bases_en/categoria.html' %} {% endblock %}
+            {% block categoria %} {% include 'bases/categoria.html' %} {% endblock %}
             <!-- /. categoria -->
             <div class=" px-0 my-2 mb-sm-4">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
@@ -60,7 +61,7 @@
                      (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
-            <div class=" px-0 my-3 d-none d-xl-block d-md-block d-xxl-none">
+            <div class=" px-0 my-2 mb-sm-4">
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                      crossorigin="anonymous"></script>
                 <!-- lateral -->
@@ -74,13 +75,11 @@
                      (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
-
-
             <!-- /. ads -->
         </div>
         <div class="col-md-10 mb-0 z-depth-0 mx-0">
             <!-- blog-->
-            {% block blog %} {% include 'bases_en/blog.html' %} {% endblock %}
+            {% block blog %} {% include 'bases/blog.html' %} {% endblock %}
             <!-- /. blog -->
         </div>
     </div>
