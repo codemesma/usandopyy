@@ -6,6 +6,513 @@
 <!--  block content -->
 {% block content %}
 
+<style>
+    :root {
+  --primary-color: #02007e;
+  --body-color: #f9f9f9;
+  --text-color: #1c1c1c;
+  --text-color-dark: #242738;
+  --white-color: #ffffff;
+  --light-color: #f8f9fa;
+  --font-family: Lato;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color-dark);
+  font-family: var(--font-family), sans-serif;
+  font-weight: 500;
+  line-height: 1.2
+}
+
+
+h4,
+.h4 {
+  font-size: 20px
+}
+
+h5,
+.h5 {
+  font-size: 18px
+}
+
+h6,
+.h6 {
+  font-size: 14px
+}
+
+
+
+.btn:active {
+  box-shadow: none
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--white-color)
+}
+
+.btn-primary:active {
+  background: var(--primary-color)
+}
+
+.btn-primary:hover {
+  background: var(--primary-color)
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color)
+}
+
+.inline-button {
+  line-height: .8rem !important;
+  padding: 5px 8px !important;
+  pointer-events: none;
+  margin-top: -5px
+}
+
+.overflow-hidden {
+  overflow: hidden !important
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: var(--white-color)
+}
+
+::selection {
+  background: var(--primary-color);
+  color: var(--white-color)
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  font-size: 15px
+}
+
+ol {
+  padding-left: 20px;
+  font-size: 15px
+}
+
+img {
+  vertical-align: middle;
+  border: 0
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: var(--primary-color)
+}
+
+a:hover,
+a:focus {
+  color: var(--primary-color)
+}
+
+a,
+button,
+select {
+  cursor: pointer;
+  transition: .2s ease
+}
+
+a:focus,
+button:focus,
+select:focus {
+  outline: 0
+}
+
+.slick-slide {
+  outline: 0
+}
+
+.section {
+  padding-top: 80px;
+  padding-bottom: 80px
+}
+
+@media(max-width:768px) {
+  .section {
+    padding-top: 60px
+  }
+}
+
+.section-sm {
+  padding-top: 60px;
+  padding-bottom: 60px
+}
+
+@media(max-width:768px) {
+  .section-sm {
+    padding-top: 40px
+  }
+}
+
+.section-title {
+  margin-bottom: 40px
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat
+}
+
+.border-primary {
+  border-color: #f2f2f2 !important
+}
+
+
+
+.overlay {
+  position: relative
+}
+
+.overlay::before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: var(--primary-color);
+  opacity: .8
+}
+
+.outline-0 {
+  outline: 0 !important
+}
+
+.d-unset {
+  display: unset !important
+}
+
+.bg-primary {
+  background: var(--primary-color) !important
+}
+
+.bg-white {
+  background-color: var(--white-color) !important
+}
+
+.bg-light {
+  background-color: var(--light-color) !important
+}
+
+.text-primary {
+  color: var(--primary-color) !important
+}
+
+.text-color {
+  color: var(--text-color) !important
+}
+
+.text-dark {
+  color: var(--text-color-dark) !important
+}
+
+.text-white {
+  color: var(--white-color) !important
+}
+
+.top-50 {
+  top: 50px
+}
+
+
+
+
+.lang-list {
+  background: var(--primary-color);
+  color: var(--white-color)
+}
+
+.lang-list.dark {
+  color: var(--text-color-dark);
+  background: var(--white-color)
+}
+
+
+
+#project-icon {
+  float: left;
+  height: 32px;
+  width: 32px
+}
+
+#project-description {
+  margin: 0;
+  padding: 0
+}
+
+.ui-helper-hidden-accessible {
+  display: none
+}
+
+.ui-menu {
+  background: var(--white-color);
+  padding: 5px 20px 20px;
+  right: 0 !important;
+  max-height: 200px;
+  overflow: hidden;
+  border-radius: 0 0 25px 25px;
+  z-index: 9999;
+  box-shadow: 0 13px 20px 0 rgba(0, 0, 0, .07)
+}
+
+@media(max-width:575px) {
+  .ui-menu {
+    width: calc(100% - 30px) !important
+  }
+}
+
+@media(min-width:576px) {
+  .ui-menu {
+    max-width: 510px !important
+  }
+}
+
+@media(min-width:768px) {
+  .ui-menu {
+    max-width: 690px !important
+  }
+}
+
+@media(min-width:992px) {
+  .ui-menu {
+    max-width: 610px !important
+  }
+}
+
+@media(min-width:1200px) {
+  .ui-menu {
+    max-width: 730px !important
+  }
+}
+
+.ui-menu-item a {
+  color: var(--text-color);
+  padding: 8px 0;
+  font-size: 15px
+}
+
+.ui-menu-item a:hover {
+  color: var(--primary-color)
+}
+
+.ui-menu-item:not(:last-child) {
+  border-bottom: 1px solid #e8e8e8
+}
+
+.ui-menu-item * {
+  display: none
+}
+
+.ui-menu-item .ui-corner-all {
+  display: block
+}
+
+.icon {
+  font-size: 40px
+}
+
+.shadow {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .07) !important;
+  transition: .3s ease
+}
+
+.shadow-bottom {
+  box-shadow: 0 1px 0 rgba(12, 13, 14, .1), 0 1px 6px rgba(59, 64, 69, .1)
+}
+
+.shadow:hover,
+.shadow:focus {
+  box-shadow: 0 14px 25px rgba(0, 0, 0, .1) !important
+}
+
+.content * {
+  margin-bottom: 20px
+}
+
+
+.list-styled li {
+  padding-left: 20px;
+  position: relative
+}
+
+.list-styled li::before {
+  position: absolute;
+  content: '';
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  opacity: .3;
+  left: 0;
+  top: 17px
+}
+
+.post-meta {
+  color: var(--text-color);
+  font-style: italic;
+  font-size: 14px
+}
+
+
+.pagination {
+  justify-content: space-between
+}
+
+.pagination a {
+  color: var(--primary-color)
+}
+
+.pagination i {
+  font-size: 15px;
+  line-height: 1.8
+}
+
+#accordion i {
+  font-size: 14px;
+  line-height: 2
+}
+
+table {
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #dee2e6
+}
+
+table td,
+table th {
+  padding: .75rem;
+  vertical-align: top;
+  border: 1px solid #dee2e6;
+  margin-bottom: 0
+}
+
+thead {
+  background: #ececec;
+  margin-bottom: 0
+}
+
+tbody {
+  background: #f8f8f8;
+  margin-bottom: 0
+}
+
+.notices {
+  margin: 2rem 0;
+  position: relative
+}
+
+.notices p {
+  padding: 10px
+}
+
+
+.sidebar {
+  background-color: var(--white-color);
+  position: sticky;
+  top: 50px;
+  margin-bottom: 30px;
+  padding: 40px 10px 20px
+}
+
+.sidelist {
+  display: block
+}
+
+li.sidelist>a {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 20px
+}
+
+li.sidelist li a {
+  margin: 0
+}
+
+.sidelist li.sidelist {
+  display: block
+}
+
+.sidelist li.sidelist.active a {
+  color: var(--primary-color)
+}
+
+.sidelist li.sidelist.active::before {
+  opacity: 1
+}
+
+.page-list li a {
+  display: none
+}
+
+.page-list li ul a {
+  display: block
+}
+
+.sidelist li a {
+  color: var(--text-color-dark);
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 0;
+  line-height: 1.4
+}
+
+
+
+
+.back-btn {
+  position: relative
+}
+
+.back-btn::before {
+  position: absolute;
+  font-family: themify;
+  content: "\e6bc";
+  font-size: 25px;
+  height: 30px;
+  width: 40px;
+  background-color: var(--white-color);
+  color: inherit;
+  text-align: right;
+  z-index: 1;
+  left: -5px;
+  top: -5px
+}
+
+
+i {
+  transition: .2s ease
+}
+
+a:hover i {
+  color: var(--primary-color)
+}
+
+
+</style>
 <!-- details page -->
 <section class="single section-sm pb-0">
   <div class="container">
@@ -27,7 +534,7 @@
                   <a href="{% url 'tutorial-view' i.slug %}" style="line-height:22px; font-size:13px;  ">{{ i.title }}</a>
                 </li>
                 {% endif %} {% endif %}{% endif %} {% endfor%}
-                
+
               </ul>
             </li>
           </ul>
@@ -38,11 +545,11 @@
           <h2 class="mb-5">{{object.title}}</h2>
           <div class="content">
             <hr>
-        
+
               {{object.content | safe}}
-            
+
         </div>
-        
+
       </div>
     </div>
     <div class="col-lg-3"></div>

@@ -1,26 +1,22 @@
-:root {
+{% extends 'theme/base.html' %} {% load static %}
+
+{%block title %} {{ object.title }} {%endblock%}
+
+
+<!--  block content -->
+{% block content %}
+
+<style>
+    :root {
   --primary-color: #02007e;
   --body-color: #f9f9f9;
-  --text-color: #636363;
+  --text-color: #1c1c1c;
   --text-color-dark: #242738;
   --white-color: #ffffff;
   --light-color: #f8f9fa;
   --font-family: Lato;
 }
 
-body {
-  line-height: 1.5;
-  font-family: var(--font-family), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 17px;
-  color: var(--text-color);
- 
-}
-
-p {
-  color: var(--text-color);
-  font-size: 15px
-}
 
 h1,
 h2,
@@ -30,24 +26,10 @@ h5,
 h6 {
   color: var(--text-color-dark);
   font-family: var(--font-family), sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.2
 }
 
-h1,
-.h1 {
-  font-size: 45px
-}
-
-h2,
-.h2 {
-  font-size: 32px
-}
-
-h3,
-.h3 {
-  font-size: 26px
-}
 
 h4,
 .h4 {
@@ -265,26 +247,7 @@ select:focus {
   background: var(--white-color)
 }
 
-.banner {
-  overflow: hidden
-}
 
-.banner p {
-  font-size: 20px;
-  opacity: .8
-}
-
-.banner .nav-link.text-dark {
-  color: var(--white-color) !important
-}
-
-.banner .nav-link.text-dark:hover {
-  color: var(--white-color) !important
-}
-
-.banner .navbar-brand {
-  color: var(--white-color) !important
-}
 
 #project-icon {
   float: left;
@@ -386,35 +349,6 @@ select:focus {
   margin-bottom: 20px
 }
 
-.content img {
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto 15px;
-  display: block;
-  text-align: center
-}
-
-.content ul {
-  padding-left: 0;
-  margin-bottom: 20px
-}
-
-.content ul li {
-  padding-left: 20px;
-  position: relative
-}
-
-.content ul li::before {
-  position: absolute;
-  content: '';
-  height: 8px;
-  width: 8px;
-  border-radius: 50%;
-  background: var(--primary-color);
-  opacity: .3;
-  left: 0;
-  top: 8px
-}
 
 .list-styled li {
   padding-left: 20px;
@@ -439,19 +373,6 @@ select:focus {
   font-size: 14px
 }
 
-blockquote {
-  font-size: 20px !important;
-  color: var(--text-color-dark);
-  padding: 20px 40px;
-  border-left: 2px solid var(--primary-color);
-  margin: 40px 0;
-  font-weight: 700;
-  background: var(--light-color)
-}
-
-blockquote p {
-  margin-bottom: 0 !important
-}
 
 .pagination {
   justify-content: space-between
@@ -506,67 +427,6 @@ tbody {
   padding: 10px
 }
 
-.notices p::before {
-  position: absolute;
-  top: 2px;
-  color: #fff;
-  font-family: themify;
-  font-weight: 900;
-  content: "\e717";
-  left: 10px
-}
-
-.notices.note p {
-  border-top: 30px solid #6ab0de;
-  background: #e7f2fa
-}
-
-.notices.note p::after {
-  content: 'Note';
-  position: absolute;
-  top: 2px;
-  color: #fff;
-  left: 2rem
-}
-
-.notices.tip p {
-  border-top: 30px solid #78c578;
-  background: #e6f9e6
-}
-
-.notices.tip p::after {
-  content: 'Tip';
-  position: absolute;
-  top: 2px;
-  color: #fff;
-  left: 2rem
-}
-
-.notices.info p {
-  border-top: 30px solid #f0b37e;
-  background: #fff2db
-}
-
-.notices.info p::after {
-  content: 'Info';
-  position: absolute;
-  top: 2px;
-  color: #fff;
-  left: 2rem
-}
-
-.notices.warning p {
-  border-top: 30px solid #e06f6c;
-  background: #fae2e2
-}
-
-.notices.warning p::after {
-  content: 'Warning';
-  position: absolute;
-  top: 2px;
-  color: #fff;
-  left: 2rem
-}
 
 .sidebar {
   background-color: var(--white-color);
@@ -620,10 +480,7 @@ li.sidelist li a {
   line-height: 1.4
 }
 
-p:empty,
-p a:empty {
-  display: none !important
-}
+
 
 
 .back-btn {
@@ -654,3 +511,54 @@ a:hover i {
   color: var(--primary-color)
 }
 
+
+</style>
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar border rounded">
+          <ul class="list-styled">
+            <a class="back-btn" href="index.html"></a>
+            <li class="sidelist">
+              <a href="single.html">{{object.category}}</a>
+              <ul>
+                {% for i in tut %} {% if object.category.id == i.category.id %}
+              {%if i.nivel == 'Basico' %} {% if object.title == i.title %}
+                <li class="sidelist active ">
+                  <a href="{% url 'tutorial-view' i.slug %}" style="line-height:22px; font-size:13px;  "> {{ i.title }} </a>
+                </li>
+                {% else %}
+                <li class="sidelist">
+                  <a href="{% url 'tutorial-view' i.slug %}" style="line-height:22px; font-size:13px;  ">{{ i.title }}</a>
+                </li>
+                {% endif %} {% endif %}{% endif %} {% endfor%}
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4 bg-white">
+          <h2 class="mb-5">{{object.title}}</h2>
+          <div class="content">
+            <hr>
+
+              {{object.content | safe}}
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9"> {% include 'posts/comments.html' %} </div>
+
+  </div>
+</section>
+<!-- /details page -->
+
+{% endblock content %}
+
+<!-- /.content -->
