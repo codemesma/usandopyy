@@ -1,0 +1,57 @@
+{% extends 'theme/base.html' %} {% load static %}
+
+{%block title %} {{ object.title }} {%endblock%}
+
+
+<!--  block content -->
+{% block content %}
+
+<!-- details page -->
+<section class="single section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar border rounded">
+          <ul class="list-styled">
+            <a class="back-btn" href="index.html"></a>
+            <li class="sidelist">
+              <a href="single.html">{{object.category}}</a>
+              <ul>
+                {% for i in tut %} {% if object.category.id == i.category.id %}
+              {%if i.nivel == 'Basico' %} {% if object.title == i.title %}
+                <li class="sidelist active ">
+                  <a href="{% url 'tutorial-view' i.slug %}" style="line-height:22px; font-size:13px;  "> {{ i.title }} </a>
+                </li>
+                {% else %}
+                <li class="sidelist">
+                  <a href="{% url 'tutorial-view' i.slug %}" style="line-height:22px; font-size:13px;  ">{{ i.title }}</a>
+                </li>
+                {% endif %} {% endif %}{% endif %} {% endfor%}
+                
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="p-lg-5 p-4 bg-white">
+          <h2 class="mb-5">{{object.title}}</h2>
+          <div class="content">
+            <hr>
+        
+              {{object.content | safe}}
+            
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9"> {% include 'posts/comments.html' %} </div>
+
+  </div>
+</section>
+<!-- /details page -->
+
+{% endblock content %}
+
+<!-- /.content -->

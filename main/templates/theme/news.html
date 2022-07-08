@@ -1,0 +1,43 @@
+<div class="widget">
+    <h5 class="widget-title"><span>Notícias recentes</span></h5>
+    <!-- post-item -->
+    <ul class="list-unstyled widget-list">
+      <li class="media  align-items-center ">
+         <a href="{{ trending.get_absolute_url }}">
+            <img loading="lazy" class="img-fluid mr-2 " 
+                   src="{% if trending.thumbnail_url %}  {{ trending.thumbnail_url }} {% else %}{{ trending.thumbnail.url }}{% endif %}" 
+                 style="height:65px; object-fit: cover;">
+         </a>
+         <div class="media-body">
+            <h5 class="h6 mb-0"><a class="py-5 font-weight-normal" href="{{ trending.get_absolute_url }}" style="line-height:22px; font-size:13px;  ">{{ trending.title }}</a></h5>
+            <small>{{ trending.timestamp }}</small>
+         </div>
+      </li>
+   </ul>
+   <ul class="list-unstyled widget-list">
+      <li class="media  align-items-center ">
+         <a href="{{ editor_choice.get_absolute_url }}">
+            <img loading="lazy" class="img-fluid mr-2 " 
+                   src="{% if editor_choice.thumbnail_url %}  {{ editor_choice.thumbnail_url }} {% else %}{{ editor_choice.thumbnail.url }}{% endif %}" 
+                 style="height:65px; object-fit: cover;">
+         </a>
+         <div class="media-body">
+            <h5 class="h6 mb-0"><a class="py-5 font-weight-normal" href="{{ editor_choice.get_absolute_url }}" style="line-height:22px; font-size:13px;  ">{{ editor_choice.title }}</a></h5>
+            <small>{{ editor_choice.timestamp }}</small>
+         </div>
+      </li>
+   </ul>
+   <ul class="list-unstyled widget-list">
+      <li class="media  align-items-center ">
+         <a href="{{ hot_news.get_absolute_url }}">
+            <img loading="lazy" class="img-fluid mr-2 " 
+                   src="{% if hot_news.thumbnail_url %}  {{ hot_news.thumbnail_url }} {% else %}{{ hot_news.thumbnail.url }}{% endif %}" 
+                 style="height:65px; object-fit: cover;">
+         </a>
+         <div class="media-body">
+            <h5 class="h6 mb-0"><a class="py-5 font-weight-normal" href="{{ hot_news.get_absolute_url }}" style="line-height:22px; font-size:13px;  ">{{ hot_news.title }}</a></h5>
+            <small>{{ hot_news.timestamp }}</small>
+         </div>
+      </li>
+   </ul>
+ </div>

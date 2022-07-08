@@ -1,0 +1,79 @@
+{% extends 'theme/base.html' %} 
+{% load static %} 
+{% load hitcount_tags %}
+{% load hitcount_tags %}
+{% get_hit_count_js_variables for tut as hitcount %}
+
+<!--  block content -->
+{%block title %} {{ object.name }} {%endblock%}
+
+<!--  block content -->
+{% block content %}
+
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 my-4 mx-0 px-0 mb-5 pb-5">
+  <div class="col-lg-8 col-md-12 col-sm-12 mx-0 mt-2" style="background-color: white">
+
+    <div class="widget">
+      <h5 class="widget-title"><span>{{object.name}}</span></h5>
+      <p>{{object.description  | safe}}</p>
+      <hr>
+      <!--Grid row-->
+      <div class="row row-cols-1">
+        <!-- post-item -->
+      {% for i in tut %} {% if object.id == i.category.id %} {%if i.nivel == 'Basico' %}
+        <div class="col-lg-6 col-md-5 col-sm-12 d-flex align-self-stretch mb-4 mx-md-0 mx-sm-0 rounded">
+          <ul class="list-unstyled widget-list">
+            <li class="media  align-items-center ">
+              <a href="{% url 'tutorial-view' i.slug %}">
+                  <img loading="lazy" class="img-fluid mr-2 " 
+                        src="{{ i.featured_image.url }}" 
+                      style="height:65px; object-fit: cover;">
+              </a>
+              <div class="media-body">
+                  <h5 class="h6 mb-0"><a class="py-5 font-weight-normal" href="{% url 'tutorial-view' i.slug %}" style="line-height:22px; font-size:13px;  ">{{i.title}}</a></h5>
+                  <small>{{i.updated_on}}</small>
+                  <br>
+                  <small><i class="fa fa-eye"> </i> {% get_hit_count for i %} Visualizações</small>
+              </div>
+            </li>
+        </ul>
+        </div>
+      {% endif %}{% endif %} {% endfor%}
+
+      </div>
+    
+   </div>
+
+
+  </div>
+  <div id="sticky-sidebar" class="col-lg-4 col-md-12 col-sm-12 mx-0 px-0" style="background-color: #f0f0f0">
+      <nav>
+        <div class=" px-0 my-1">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                 crossorigin="anonymous"></script>
+            <!-- lateral -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1810411345881098"
+                 data-ad-slot="6899621083"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="my-1">
+            <!-- ads-->
+            <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+            <!-- /. ads -->
+        </div>
+  </div>
+    </nav>
+    </div>
+</div>
+</div>
+  {% endblock content %}
+
+  <!-- /.content -->
+
