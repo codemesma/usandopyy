@@ -1,87 +1,119 @@
-{% extends 'bases_en/base.html' %} {% load static %} {% load blog_tags %}
+{% extends 'theme_en/base.html' %}
+{% load static %}
+{% load django_simple_cookie_consent_tags %}
+
 <!--  block content -->
-{% block title %} {{ blog_name.title }} {%endblock %} {% block content %}
-{%block description %}
-<link rel="canonical" href="{{ request.build_absolute_uri }}" />
-<meta property="og:url" content="{{ request.build_absolute_uri }}" />
-<meta property="og:image" content="{{ blog_name.featured_image.url }}" />
-<meta
-  property="og:image:secure_url"
-  content="{{ blog_name.featured_image.url }}"
-/>
-<meta property="og:image:width" content="300" />
-<meta property="og:image:height" content="300" />
-<meta name="twitter:image" content="{{ blog_name.featured_image.url }}" />
-<meta name="twitter:card" content="summary" />
 
-<meta property="og:title" content="{{ blog_name.title }}" />
-<meta property="og:description" content="{{ description|truncatechars:160 }}" />
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% block title %} {{ blog_name.title }} {%endblock %} </title>
 
-<meta name="title" content="{{ blog_name.title }}" />
-<meta name="description" content="{{ description|truncatechars:160 }}" />
-<meta name="keywords" content="{{ keywords }}" />
-<meta name="author" content="{{ author }}" />
-<meta name="robots" content="index, follow" />
-{% endblock %}
-<link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-  rel="stylesheet"
-/>
-<link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-  rel="stylesheet"
-/>
-<style>
-  em {
-    color: #333333;
-    font-weight: bolder;
-  }
+    <!-- mobile responsive meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
 
-  p {
-    color: #333333;
-    font-family: "Segoe UI";
-    font-size: 17.5px;
-    letter-spacing: normal;
-    word-spacing: 0px;
-    padding: 0px;
-    font-weight: 400;
-    line-height: 26px;
-    margin: 0px 0px 12px;
-    text-align: justify;
-    text-decoration: none solid rgb(0, 28, 59);
-    text-indent:0px;
-  }
-  h1 {
-    color:#001c3b;
-    font-family: "proxima-nova", sans-serif;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 23.1px;
-    margin: 0px 0px 8px;
-    text-transform: none;
-    text-decoration: none solid rgb(0, 28, 59);
-    text-align: left;
-  }
-  h2 {
-    color:#001c3b;
-    font-family: "proxima-nova", sans-serif;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 23.1px;
-    margin: 30px 0px 8px;
-    text-transform: none;
-    text-decoration: none solid rgb(0, 28, 59);
-    text-align: left;
-  }
-</style>
-<!-- banner-->
-<!-- /. banner -->
-<div class="container pt-5">
-  <div class="row row-cols-1 row-cols-md-2 pt-5 mb-4">
+
+    <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
+    <meta name="google-site-verification" content="zddSG9Su1C2rFiH4lBf8Hq7b27P57AS9epwNWWRNly8" />
+    <meta name="verify-admitad" content="d73d18973a" />
+
+
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image" content="{{ object.featured_image.url }}" />
+    <meta property="og:image:secure_url" content="{{ object.featured_image.url }}"/>
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta name="twitter:image" content="{{ object.featured_image.url }}" />
+    <meta name="twitter:card" content="summary" />
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description|truncatechars:160 }}"/>
+
+    <meta name="title" content="{{ title }}" />
+    <meta name="description" content="{{ description|truncatechars:160 }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <meta name="author" content="{{ author }}" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- plugins -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2"
+      style="font-display: optional"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/bootstrap/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:600%7cOpen&#43;Sans&amp;display=swap"
+      media="screen"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/themify-icons/themify-icons.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}" />
+
+    <!-- Main Stylesheet -->
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+    <!--Favicon-->
+    <link
+      rel="shortcut icon"
+      href="{% static 'logo.png' %}"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="{% static 'logo.png' %}" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/agate.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS65HDVLGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VS65HDVLGL');
+    </script>
+
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+     crossorigin="anonymous"></script>
+    {% display_cookie_consent %}
+
+    <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
+
+    {% endblock %}
+
+
+{% block content %}
+
+<div class="container ">
+  <div class="row row-cols-1 row-cols-md-2  mb-4">
     <!-- postagem-->
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0 white">
       <div class="pt-4">
-        <h1><strong>{{ blog_name.title }}</strong></h1>
+        <h1>{{ blog_name.title }}</h1>
       </div>
       <hr />
       <div class="blog_cat_author">
@@ -101,17 +133,9 @@
       </div>
       <!--Section: Post-->
       <section class="mt-4">
-        <!--Featured Image-->
-        <div class="card mb-4 z-depth-0">
-          <img
-            src="{{ blog_name.featured_image.url }}"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-        <!--/.Featured Image-->
 
-        <div class="mb-3 ">
+
+        <div class="mb-2 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- Quadrado -->
@@ -143,7 +167,7 @@
         {% for e in author %} {% if e.id == blog_name.user.id %}
         <div class="card container z-depth-0 mb-4">
           <div class="card-header font-weight-bold">
-            <span>Sobre o autor</span>
+            <span>About the author</span>
             <span class="pull-right pl-3">
               {% if e.facebook %}
               <a href="{{e.facebook}}" target="_blank">
@@ -219,27 +243,24 @@
 
     <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
       <div class="sidebar container">
-        <!-- Search Widget -->
-        <div
-          class="widget search p-0 border rounded"
-        >
-          <form class="" action="{% url 'blog_search_en' %}" method="get">
-            {% csrf_token %}
-            <div class="input-group">
-              <input
-                name="q"
-                type="text"
-                class="form-control px-3 z-depth-1"
-                placeholder="procurar..."
-              />
-              <span class="input-group-addon" style="background-color: #f7992d;"
-                ><i class="fa fa-search"></i
-              ></span>
-            </div>
-          </form>
+        <!-- categories -->
+        <div class="widget">
+          <h5 class="widget-title"><span>Category</span></h5>
+          <ul class="list-inline widget-list-inline">
+            {% for category in categories_list %}
+            <li class="list-inline-item">
+              <a href="{% url 'selected_category_en' category_slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+                >{{ category}}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+
         </div>
 
-        <div class=" px-0 ">
+        <hr>
+
+        <div class=" mb-5 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- lateral -->
@@ -257,7 +278,7 @@
         {% block recente %} {% include 'posts_en/recente.html' %} {% endblock %}
 
         <!-- Adds -->
-        <div class=" px-0 ">
+        <div class=" my-5 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- lateral -->
@@ -272,32 +293,9 @@
             </script>
         </div>
 
-        <!-- Category Widget -->
 
-        <div
-          class="widget category border rounded py-0 px-0"
-        >
-          <!-- Widget Header -->
-          <h5 class="widget-header white-text py-2 px-2 font-weight-bold" style="background-color: #f7992d;">
-            Categorias
-          </h5>
-          <ul class="category-list px-3">
-            {% for category in categories_list %}
-            <li>
-              <a
-                href="{% url 'selected_category_en' category_slug=category.slug %}"
-                >{{ category }}
-                <span class="badge float-right" style="background-color: #f7992d;"
-                  >{{ category| category_posts }}
-                </span></a
-              >
-            </li>
-
-            {% endfor %}
-          </ul>
-        </div>
         <!-- Adds -->
-        <div class=" px-0 ">
+        <div class=" mb-4 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- lateral -->
@@ -324,7 +322,7 @@
   <!-- artigos relacionados-->
 
   <div class="card mb-4 wow fadeIn z-depth-0 mx-0 px-0">
-    <div class="card-header white-text py-2 font-weight-bold" style="background-color: #f7992d;">
+    <div class="card-header white-text py-2 font-weight-bold">
       Related articles you might like
     </div>
     <!--Card content-->

@@ -1,32 +1,16 @@
-/**
- * WEBSITE: https://themefisher.com
- * TWITTER: https://twitter.com/themefisher
- * FACEBOOK: https://www.facebook.com/themefisher
- * GITHUB: https://github.com/themefisher/
- */
 
-/*!------------------------------------------------------------------
-[MAIN STYLESHEET]
-
-PROJECT:	Project Name
-VERSION:	Versoin Number
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[TABLE OF CONTENTS]
--------------------------------------------------------------------*/
-/*  typography */
 body {
   line-height: 1.7;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #696c6d;
+  color: #252626;
   font-size: 14px;
 }
 
 p, .paragraph {
   font-weight: 400;
-  color: #696c6d;
-  font-size: 14px;
+  color: #252626;
+  font-size: 15px;
   line-height: 1.7;
   font-family: "Open Sans", sans-serif;
 }
@@ -38,13 +22,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1, .h1 {
-  font-size: 45px;
-}
 
-h2, .h2 {
-  font-size: 36px;
-}
 
 h3, .h3 {
   font-size: 28px;
@@ -81,7 +59,7 @@ h6, .h6 {
 
 .btn-primary {
   background: #ce8460;
-  color: #fff;
+  color: #ffffff;
   border-color: #ce8460;
 }
 .btn-primary:active, .btn-primary:hover, .btn-primary.focus, .btn-primary.active {
@@ -170,20 +148,9 @@ a:hover {
   outline: 0;
 }
 
-.section {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-.section-sm {
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
 
-.bg-cover {
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
+
+
 
 .border-primary {
   border-color: #ddd !important;
@@ -306,7 +273,7 @@ a:hover {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-  padding: 15px 20px;
+  padding: 10px 10px ;
 }
 
 .navbar .dropdown:hover .dropdown-menu {
@@ -366,51 +333,7 @@ a:hover {
   background: transparent;
 }
 
-/* search */
-.search-btn {
-  border: 0;
-  background: transparent;
-}
 
-.search-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  z-index: 2;
-  visibility: hidden;
-  transition: 0.2s ease;
-  opacity: 0;
-}
-.search-wrapper.open {
-  visibility: visible;
-  opacity: 1;
-}
-
-.search-box {
-  height: 100%;
-  width: 100%;
-  border: 0;
-  background: #fff;
-  font-size: 20px;
-  padding: 0;
-}
-.search-box:focus {
-  box-shadow: none !important;
-  outline: 0;
-}
-
-.search-close {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 0;
-  background: transparent;
-  page-break-after: 10px;
-  font-size: 20px;
-}
 
 .post-title {
   color: #1c1d1f;

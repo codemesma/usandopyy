@@ -1,12 +1,12 @@
 <div class="widget">
-    <h5 class="widget-title"><span>Postagens recentes</span></h5>
+    <h5 class="widget-title"><span>Latest Posts</span></h5>
     <!-- post-item -->
     {% for b in post %}
     <ul class="list-unstyled widget-list">
       <li class="media  align-items-center ">
          <a href="{% url 'blog_post_view' blog_slug=b.slug %}">
-            <img loading="lazy" class="img-fluid mr-2 " 
-                   src="{{ b.featured_image.url }}" 
+            <img loading="lazy" class="img-fluid mr-2 "
+                   src="{{ b.featured_image.url }}"
                  style="height:65px; object-fit: cover;">
          </a>
          <div class="media-body">
@@ -16,5 +16,5 @@
       </li>
    </ul>
    {% endfor %}
-  
+
  </div>

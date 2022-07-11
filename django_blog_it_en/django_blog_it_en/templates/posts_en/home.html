@@ -1,19 +1,71 @@
-{% extends 'bases_en/base.html' %} {% load static %}
+{% extends 'theme_en/base.html' %} {% load static %}
 <!--  block content -->
-{%block title%} Usandopy - Blog {%endblock%} {% block content %}
+{%block title%} Blog - UsandoPy {%endblock%} {% block content %}
 
-<div class="container py-5" style="background-color: white;">
-<div class="my-2"></div>
-  <div class="row row-cols-1 row-cols-md-3 pt-2 mb-4">
-    <!-- postagens-->
-    {% block postagens %} {% include 'posts_en/postagens.html' %} {% endblock %}
-    <!-- /. postagens -->
 
-    <!-- postagens-->
-    {% block categoria %} {% include 'posts_en/categoria.html' %} {% endblock %}
-    <!-- /. postagens -->
+{% load static %}
+<section class="section mt-0">
+  <div class="container">
+    <div class="row">
+      <aside class="col-lg-4 order-2 order-lg-1 border">
+        <!-- Search -->
+        <div class="widget py-0">
+          <h5 class="widget-title"><span>Search</span></h5>
+		  <div class="">
+			<script async src="https://cse.google.com/cse.js?cx=e542ecd9cf3c36e91"></script>
+				  <div class="gcse-search"></div>
+		  <div class=" mb-5">
+			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+				   crossorigin="anonymous"></script>
+			  <!-- lateral -->
+			  <ins class="adsbygoogle"
+				   style="display:block"
+				   data-ad-client="ca-pub-1810411345881098"
+				   data-ad-slot="6899621083"
+				   data-ad-format="auto"
+				   data-full-width-responsive="true"></ins>
+			  <script>
+				   (adsbygoogle = window.adsbygoogle || []).push({});
+			  </script>
+		  </div>
+        </div>
+
+        <!--  block news -->
+        {% block news %} {% include 'theme_en/news.html' %} {% endblock %}
+
+        <div class=" mb-5">
+			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+				   crossorigin="anonymous"></script>
+			  <!-- lateral -->
+			  <ins class="adsbygoogle"
+				   style="display:block"
+				   data-ad-client="ca-pub-1810411345881098"
+				   data-ad-slot="6899621083"
+				   data-ad-format="auto"
+				   data-full-width-responsive="true"></ins>
+			  <script>
+				   (adsbygoogle = window.adsbygoogle || []).push({});
+			  </script>
+		 </div>
+
+        <!--  block ads_2 -->
+        {% block ads_2 %} {% include 'theme_en/ads_2.html' %} {% endblock %}
+      </aside>
+
+      <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+
+		<!--  block categoria -->
+        {% block categoria %} {% include 'posts_en/categoria.html' %} {% endblock %}
+
+        <hr>
+
+        <!-- postagens-->
+        {% block postagens %} {% include 'posts_en/postagens.html' %} {% endblock %}
+
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 {% endblock content %}
 

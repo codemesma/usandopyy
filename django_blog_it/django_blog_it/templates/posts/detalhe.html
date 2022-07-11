@@ -108,12 +108,12 @@
 
 {% block content %}
 
-<div class="container pt-5">
-  <div class="row row-cols-1 row-cols-md-2 pt-5 mb-4">
+<div class="container ">
+  <div class="row row-cols-1 row-cols-md-2  mb-4">
     <!-- postagem-->
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0 white">
       <div class="pt-4">
-        <h1><strong>{{ blog_name.title }}</strong></h1>
+        <h1>{{ blog_name.title }}</h1>
       </div>
       <hr />
       <div class="blog_cat_author">
@@ -133,17 +133,9 @@
       </div>
       <!--Section: Post-->
       <section class="mt-4">
-        <!--Featured Image
-        <div class="card mb-4 z-depth-0">
-          <img
-            src="{{ blog_name.featured_image.url }}"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-        Featured Image-->
 
-        <div class="mb-3 ">
+
+        <div class="mb-2 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- Quadrado -->
@@ -251,27 +243,24 @@
 
     <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
       <div class="sidebar container">
-        <!-- Search Widget -->
-        <div
-          class="widget search p-0 border rounded"
-        >
-          <form class="" action="{% url 'blog_search' %}" method="get">
-            {% csrf_token %}
-            <div class="input-group">
-              <input
-                name="q"
-                type="text"
-                class="form-control px-3 z-depth-1"
-                placeholder="procurar..."
-              />
-              <span class="input-group-addon" style="background-color: #f7992d;"
-                ><i class="fa fa-search"></i
-              ></span>
-            </div>
-          </form>
+        <!-- categories -->
+        <div class="widget">
+          <h5 class="widget-title"><span>Categorias</span></h5>
+          <ul class="list-inline widget-list-inline">
+            {% for category in categories_list %}
+            <li class="list-inline-item">
+              <a href="{% url 'selected_category' category_slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+                >{{ category}}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+
         </div>
 
-        <div class=" px-0 ">
+        <hr>
+
+        <div class=" mb-5 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- lateral -->
@@ -289,7 +278,7 @@
         {% block recente %} {% include 'posts/recente.html' %} {% endblock %}
 
         <!-- Adds -->
-        <div class=" px-0 ">
+        <div class=" my-5 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- lateral -->
@@ -304,32 +293,9 @@
             </script>
         </div>
 
-        <!-- Category Widget -->
 
-        <div
-          class="widget category border rounded py-0 px-0"
-        >
-          <!-- Widget Header -->
-          <h5 class="widget-header white-text py-2 px-2 font-weight-bold" style="background-color: #f7992d;">
-            Categorias
-          </h5>
-          <ul class="category-list px-3">
-            {% for category in categories_list %}
-            <li>
-              <a
-                href="{% url 'selected_category' category_slug=category.slug %}"
-                >{{ category }}
-                <span class="badge float-right" style="background-color: #f7992d;"
-                  >{{ category}}
-                </span></a
-              >
-            </li>
-
-            {% endfor %}
-          </ul>
-        </div>
         <!-- Adds -->
-        <div class=" px-0 ">
+        <div class=" mb-4 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
                  crossorigin="anonymous"></script>
             <!-- lateral -->
@@ -356,7 +322,7 @@
   <!-- artigos relacionados-->
 
   <div class="card mb-4 wow fadeIn z-depth-0 mx-0 px-0">
-    <div class="card-header white-text py-2 font-weight-bold" style="background-color: #f7992d;">
+    <div class="card-header white-text py-2 font-weight-bold">
       Artigos relacionados, que você poderias gostar
     </div>
     <!--Card content-->

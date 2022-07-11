@@ -1,15 +1,15 @@
 {% load static %}
-<section class="section">
+<section class="section mt-0">
   <div class="container">
     <div class="row">
-      <aside class="col-lg-4 order-2 order-lg-1 border">
+      <aside class="col-lg-4 order-2 order-lg-1 border-right">
         <!-- Search -->
         <div class="widget py-0">
           <h5 class="widget-title"><span>Pesquisar</span></h5>
 		  <div class="">
 			<script async src="https://cse.google.com/cse.js?cx=e542ecd9cf3c36e91"></script>
 				  <div class="gcse-search"></div>
-		  <div class=" px-0">
+		  <div class=" mt-4 mb-5">
 			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
 				   crossorigin="anonymous"></script>
 			  <!-- lateral -->
@@ -24,29 +24,30 @@
 			  </script>
 		  </div>
         </div>
-        <!--  block Quiz -->
-        {% block quiz %} {% include 'theme/quiz.html' %} {% endblock %}
-        <!-- categories -->
-        <div class="widget">
-          <h5 class="widget-title"><span>Categorias</span></h5>
-          <ul class="list-inline widget-list-inline">
-            {% for t in tipo %}
-            <li class="list-inline-item">
-              <a href="#!" style="background-color: #387eb8; color: #ffffff"
-                >{{t.name}}</a
-              >
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <!--  block ads_1 -->
-        {% block ads_1 %} {% include 'theme/ads_1.html' %} {% endblock %}
-
-		<!--  block blog -->
-        {% block blog %} {% include 'theme/blog.html' %} {% endblock %}
 
         <!--  block news -->
         {% block news %} {% include 'theme/news.html' %} {% endblock %}
+
+        <div class=" mb-5">
+			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+				   crossorigin="anonymous"></script>
+			  <!-- lateral -->
+			  <ins class="adsbygoogle"
+				   style="display:block"
+				   data-ad-client="ca-pub-1810411345881098"
+				   data-ad-slot="6899621083"
+				   data-ad-format="auto"
+				   data-full-width-responsive="true"></ins>
+			  <script>
+				   (adsbygoogle = window.adsbygoogle || []).push({});
+			  </script>
+		 </div>
+
+		 <!--  block blog -->
+        {% block blog %} {% include 'theme/blog.html' %} {% endblock %}
+
+        <!--  block ads_1 -->
+        {% block ads_1 %} {% include 'theme/ads_1.html' %} {% endblock %}
 
         <!--  block ads_2 -->
         {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
@@ -61,7 +62,7 @@
 		<br>
         <!--  block Tutorial -->
         {% block tutorial %} {% include 'theme/tutorial.html' %} {% endblock %}
-        
+
       </div>
     </div>
   </div>

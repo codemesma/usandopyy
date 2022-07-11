@@ -1,80 +1,46 @@
 {% load static %}
 
 <!-- navigation -->
-<header class="sticky-top bg-white border-bottom border-default">
-    <div class="container">
- 
-       <nav class="navbar navbar-expand-lg navbar-white mx-0 px-0">
+<header class="sticky-top bg-white z-depth-1 py-0">
+    <div class="container-fluid py-0">
+
+       <nav class="navbar navbar-expand-lg navbar-white mx-0 px-0 z-depth-1 py-0 mb-5">
           <a class="navbar-brand" href="{% url 'home-page_en' %}">
              <img class="img-fluid" src="{% static 'logo2.jpg' %}" alt="LogBook">
           </a>
           <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
              <i class="ti-menu"></i>
           </button>
- 
-          <div class="collapse navbar-collapse text-center" id="navigation">
-             <ul class="navbar-nav ml-auto">
+
+          <div class="collapse navbar-collapse text-center py-0 my-0" id="navigation">
+             <ul class="navbar-nav ml-auto py-0 my-0">
+               <li class="nav-item ">
+                     <a class="nav-link " href="{% url 'home-page_en' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+               </li>
                 <li class="nav-item dropdown">
                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                       aria-expanded="false">
-                      Linguagem<i class="ti-angle-down ml-1"></i>
+                      <i class="fas fa-code"></i> Programming language<i class="ti-angle-down ml-1"></i>
                    </a>
                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="index-full.html">Python iniciante</a>
-                      <a class="dropdown-item" href="index-full-left.html">Python intermediario</a>
-                      <a class="dropdown-item" href="index-full-right.html">Python avançado</a>
-                      <a class="dropdown-item" href="index-list.html">Linguagem R</a>
-                      <a class="dropdown-item" href="index-list-left.html">Programação em C</a>
+                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/python-beginners/">Python Beginners</a>
+                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/python-intermediate/">Python Intermediate</a>
+                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/python-advanced/">Python Advanced</a>
+                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/sql-tutorial/">SQL Tutorial</a>
                    </div>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="{% url 'index_en' %}">Blog</a>
+                   <a class="nav-link" href="{% url 'index_en' %}"><i class="fa-solid fa-blog"></i> Programming Blog</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="{% url 'newspaper_en:noticias_en' %}">News</a>
+                   <a class="nav-link" href="{% url 'newspaper_en:noticias_en' %}"><i class="fas fa-newspaper"></i> Tech News</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link btn btn-sm" href="{% url 'home' %}">Quiz</a>
+                   <a class="nav-link"  href="{% url 'home-page' %}"><i class="fa fa-language" aria-hidden="true"></i> Português</a>
                </li>
-                
+
              </ul>
-             
-             <ul class="navbar-nav me-auto mb-2 mb-lg-0 py-0">
-               <li class="nav-item pt-1 pb-0">
-                 <a
-                   class="nav-link font-weight-normal text-capitalize text-dark h6"
-                   href="{% url 'home-page' %}"
-                   ><i class="flag flag-brazil"></i>Português</a>
-               </li>
-               <li class="nav-item pt-1 pb-0">
-                 <a
-                   class="nav-link font-weight-normal text-capitalize text-dark h6"
-                   href="{% url 'home-page_en' %}"
-                   ><i class="flag flag-united-kingdom"></i>English</a>
-               </li>
-             </ul>
- 
-             <div class="dropdown">
-               {% if user.is_authenticated %}
-                 <p class="pt-1">
-                   {% if user.is_student %}
-                     <strong><a href="{% url 'students:student_detail' student=user.id %}">{{ user.username }}</a> <button type="button" class="badge badge-dark">
-                       Pontuação <span class="badge bg-danger ms-2 ">{{user.student.score}}</span>
-                       <span class="visually-hidden">unread messages</span>
-                     </button> </strong>
-                   {% else %}
-                     <strong>{{ user.username }}</strong>
-                   {% endif %}
-                     | <a href="{% url 'logout' %}">Sair</a>
-                 </p>
-               {% else %}
-                 <a href="{% url 'login' %}" class="btn btn-sm btn-light" role="button">Log in</a>
-                 <a href="{% url 'signup' %}" class="btn btn-sm btn-primary" role="button">Sign up</a>
-               {% endif %}
-            
-               
-             </div>
- 
+
           </div>
        </nav>
     </div>

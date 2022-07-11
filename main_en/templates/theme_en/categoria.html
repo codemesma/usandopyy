@@ -1,24 +1,26 @@
 {% for t in tipo %}
-        <div class="border border-default collapse-wrapper">
+        <div class="card border-default collapse-wrapper mb-1">
           <a
-            class="d-flex p-2 collapse-head"
+            class="d-flex p-2 collapse-head dark "
             data-toggle="collapse"
             href="#{{t.name|slice:":4"}}{{t.id}}"
             role="button"
+            style="font-size: 15.3px; font-family: Verdana, Helvetica, sans-serif; color: #000000;"
           >
 		  {{t.name}} <i class="ti-plus ml-auto"></i>
           </a>
           <div class="collapse" id="{{t.name|slice:":4"}}{{t.id}}">
             <div class="p-2">
-				<ul class="list-group-flush z-depth-0 pt-0">
+				<ul class="list-group list-group-light list-group-small z-depth-0 pt-0">
 					{% for c in categoria1 %} {% if t.id == c.tipo.id %}
-	  
+
 					<li
 					  style="background-color: #ffffff;"
-					  class="list-group-item px-1 py-2"
+					  class="list-group-item px-3"
 					>
 					  <a href="{% url 'categoria-view_en' c.slug  %}">
-						<h6 class="my-0 py-0 px-lg-0 px-0 text-left font-weight-normal" style="font-size: 13.3px; font-family: Verdana, Helvetica, sans-serif;">
+						<h6 class="my-0 py-0 px-lg-0 px-0 text-left font-weight-normal"
+						    style="font-size: 13.3px; font-family: Verdana, Helvetica, sans-serif;  ">
 						  <img
 							class="h4"
 							style="height: 22px; width: 22px;"
@@ -30,10 +32,12 @@
 						</h6>
 					  </a>
 					</li>
-	  
+
 					{% endif %} {% endfor %}
 				  </ul>
 			</div>
           </div>
         </div>
 		{% endfor %}
+
+		<div class="mb-5"></div>

@@ -1,4 +1,4 @@
-{% extends 'bases/base.html' %} {% load static %}
+{% extends 'theme_en/base.html' %} {% load static %}
 <!--  block content -->
 {%block title %} {{ object.nome }} {%endblock%}
 <!--  block content -->
@@ -162,7 +162,7 @@
         {{object.description | safe}}
     </p>
 
-    <h1 class="my-0 py-0" ><a class="btn btn-primary" href="{{object.web}}" target="_blank">Clique aqui para baixar</a></h1>
+    <h1 class="my-0 py-0" ><a class="btn btn-primary" href="{{object.web}}" target="_blank">Click here to download</a></h1>
 
     <div class=" px-0 my-3">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"

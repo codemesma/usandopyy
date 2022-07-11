@@ -18,6 +18,9 @@ from django_blog_it_en.django_blog_it_en.models import Post_Slugs
 from django.db.models import Q
 from main_en.models import Categoria, Sobre
 
+from mainsite_en.models import HomePageSettings
+from news_en.models import News
+
 
 def categories_tags_lists():
     categories_list = Category.objects.filter(
@@ -34,8 +37,29 @@ class Home(ListView):
         status='Published', category__is_active=True).order_by('-updated_on')
     context_object_name = "blog_posts"
 
+    def get_home_page_post_list(self):
+        home_page_settings = HomePageSettings.objects.last()
+        news_list = News.objects.all()
+        post_catalog_one = news_list.filter(
+            category=home_page_settings.post_catalog_one).order_by('-id')[:3]
+        post_catalog_two = news_list.filter(
+            category=home_page_settings.post_catalog_two).order_by('-id')[:2]
+        post_catalog_three = news_list.filter(
+            category=home_page_settings.post_catalog_three).order_by('-id')[:2]
+        post_catalog_four = news_list.filter(
+            category=home_page_settings.post_catalog_four).order_by('-id')[:3]
+        post_catalog_five = news_list.filter(
+            category=home_page_settings.post_catalog_five).order_by('-id')[:2]
+        return (home_page_settings.hot_news, post_catalog_one, post_catalog_two, post_catalog_three,
+                post_catalog_four, post_catalog_five, home_page_settings.trending, home_page_settings.editor_choice)
+
     def get_context_data(self, *args, **kwargs):
         context = super(Home, self).get_context_data(*args, **kwargs)
+
+        results = self.get_home_page_post_list()
+        context['hot_news'] = results[0]
+        context['trending'] = results[6]
+        context['editor_choice'] = results[7]
 
         categories_list = Category.objects.filter(
             is_active=True, post__status='Published').distinct()
@@ -72,9 +96,30 @@ class BlogPostView(DetailView):
                 return HttpResponseRedirect(reverse('blog_post_view', kwargs={"blog_slug": post_slug.blog.slug}), status=301)
         return super(BlogPostView, self).dispatch(request, *args, **kwargs)
 
+    def get_home_page_post_list(self):
+        home_page_settings = HomePageSettings.objects.last()
+        news_list = News.objects.all()
+        post_catalog_one = news_list.filter(
+            category=home_page_settings.post_catalog_one).order_by('-id')[:3]
+        post_catalog_two = news_list.filter(
+            category=home_page_settings.post_catalog_two).order_by('-id')[:2]
+        post_catalog_three = news_list.filter(
+            category=home_page_settings.post_catalog_three).order_by('-id')[:2]
+        post_catalog_four = news_list.filter(
+            category=home_page_settings.post_catalog_four).order_by('-id')[:3]
+        post_catalog_five = news_list.filter(
+            category=home_page_settings.post_catalog_five).order_by('-id')[:2]
+        return (home_page_settings.hot_news, post_catalog_one, post_catalog_two, post_catalog_three,
+                post_catalog_four, post_catalog_five, home_page_settings.trending, home_page_settings.editor_choice)
+
 
     def get_context_data(self, *args, **kwargs):
         context = super(BlogPostView, self).get_context_data(*args, **kwargs)
+
+        results = self.get_home_page_post_list()
+        context['hot_news'] = results[0]
+        context['trending'] = results[6]
+        context['editor_choice'] = results[7]
 
         author = Author.objects.all()
         categories_list = Category.objects.filter(
@@ -107,6 +152,22 @@ class SelectedCategoryView(ListView):
     template_name = "posts_en/detalhe-cat.html"
     context_object_name = "blog_posts"
 
+    def get_home_page_post_list(self):
+        home_page_settings = HomePageSettings.objects.last()
+        news_list = News.objects.all()
+        post_catalog_one = news_list.filter(
+            category=home_page_settings.post_catalog_one).order_by('-id')[:3]
+        post_catalog_two = news_list.filter(
+            category=home_page_settings.post_catalog_two).order_by('-id')[:2]
+        post_catalog_three = news_list.filter(
+            category=home_page_settings.post_catalog_three).order_by('-id')[:2]
+        post_catalog_four = news_list.filter(
+            category=home_page_settings.post_catalog_four).order_by('-id')[:3]
+        post_catalog_five = news_list.filter(
+            category=home_page_settings.post_catalog_five).order_by('-id')[:2]
+        return (home_page_settings.hot_news, post_catalog_one, post_catalog_two, post_catalog_three,
+                post_catalog_four, post_catalog_five, home_page_settings.trending, home_page_settings.editor_choice)
+
     def get_queryset(self):
         self.category = get_object_or_404(
             Category, slug=self.kwargs.get("category_slug"))
@@ -115,6 +176,12 @@ class SelectedCategoryView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(SelectedCategoryView,
                         self).get_context_data(*args, **kwargs)
+
+        results = self.get_home_page_post_list()
+        context['hot_news'] = results[0]
+        context['trending'] = results[6]
+        context['editor_choice'] = results[7]
+
         user = self.category.user
         author = Author.objects.all()
         categories_list = Category.objects.filter(
@@ -147,8 +214,30 @@ class ArchiveView(ListView):
         return Post.objects.filter(
             category__is_active=True, status="Published", updated_on__year=year, updated_on__month=month).order_by('-updated_on')
 
+    def get_home_page_post_list(self):
+        home_page_settings = HomePageSettings.objects.last()
+        news_list = News.objects.all()
+        post_catalog_one = news_list.filter(
+            category=home_page_settings.post_catalog_one).order_by('-id')[:3]
+        post_catalog_two = news_list.filter(
+            category=home_page_settings.post_catalog_two).order_by('-id')[:2]
+        post_catalog_three = news_list.filter(
+            category=home_page_settings.post_catalog_three).order_by('-id')[:2]
+        post_catalog_four = news_list.filter(
+            category=home_page_settings.post_catalog_four).order_by('-id')[:3]
+        post_catalog_five = news_list.filter(
+            category=home_page_settings.post_catalog_five).order_by('-id')[:2]
+        return (home_page_settings.hot_news, post_catalog_one, post_catalog_two, post_catalog_three,
+                post_catalog_four, post_catalog_five, home_page_settings.trending, home_page_settings.editor_choice)
+
     def get_context_data(self, *args, **kwargs):
         context = super(ArchiveView, self).get_context_data(*args, **kwargs)
+
+        results = self.get_home_page_post_list()
+        context['hot_news'] = results[0]
+        context['trending'] = results[6]
+        context['editor_choice'] = results[7]
+
         categories_list = Category.objects.filter(
             is_active=True, post__status='Published').distinct()
         context['categoria'] = Categoria.objects.all()
@@ -182,6 +271,11 @@ class blog_SearchView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(blog_SearchView, self).get_context_data(
             *args, **kwargs)
+
+        results = self.get_home_page_post_list()
+        context['hot_news'] = results[0]
+        context['trending'] = results[6]
+        context['editor_choice'] = results[7]
 
         categories_list = Category.objects.filter(
             is_active=True, post__status='Published').distinct()

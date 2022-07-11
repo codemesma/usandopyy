@@ -22,7 +22,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'classroom',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -37,6 +36,10 @@ INSTALLED_APPS = [
     'mainsite_en.apps.Mainsite_enConfig',
     'news.apps.NewsConfig',
     'news_en.apps.News_enConfig',
+    'quiz',
+    'multichoice',
+    'true_false',
+    'essay',
     'ckeditor',
     'ckeditor_uploader',
 
@@ -188,12 +191,11 @@ STATICFILES_DIRS = [
 
 
 # Custom Django auth settings
-AUTH_USER_MODEL = 'classroom.User'
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 
 
 # Messages built-in framework

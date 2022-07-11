@@ -141,31 +141,9 @@ select:focus {
   outline: 0
 }
 
-.section {
-  padding-top: 80px;
-  padding-bottom: 80px
-}
 
-@media(max-width:768px) {
-  .section {
-    padding-top: 60px
-  }
-}
 
-.section-sm {
-  padding-top: 60px;
-  padding-bottom: 60px
-}
 
-@media(max-width:768px) {
-  .section-sm {
-    padding-top: 40px
-  }
-}
-
-.section-title {
-  margin-bottom: 40px
-}
 
 .bg-cover {
   background-size: cover;
@@ -515,12 +493,26 @@ a:hover i {
 </style>
 <!-- details page -->
 <section class="single section-sm pb-0">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 order-2 order-lg-1">
+          <div class=" mb-2">
+			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+				   crossorigin="anonymous"></script>
+			  <!-- lateral -->
+			  <ins class="adsbygoogle"
+				   style="display:block"
+				   data-ad-client="ca-pub-1810411345881098"
+				   data-ad-slot="6899621083"
+				   data-ad-format="auto"
+				   data-full-width-responsive="true"></ins>
+			  <script>
+				   (adsbygoogle = window.adsbygoogle || []).push({});
+			  </script>
+		  </div>
         <div class="sidebar border rounded">
           <ul class="list-styled">
-            <a class="back-btn" href="index.html"></a>
+            <a class="back-btn" href="#"></a>
             <li class="sidelist">
               <a href="single.html">{{object.category}}</a>
               <ul>
@@ -540,8 +532,8 @@ a:hover i {
           </ul>
         </div>
       </div>
-      <div class="col-lg-9">
-        <div class="p-lg-5 p-4 bg-white">
+      <div class="col-lg-7 order-1 order-lg-2">
+        <div class=" bg-white">
           <h2 class="mb-5">{{object.title}}</h2>
           <div class="content">
             <hr>
@@ -551,10 +543,26 @@ a:hover i {
         </div>
 
       </div>
+      {% include 'posts/comments.html' %}
     </div>
-    <div class="col-lg-3"></div>
-    <div class="col-lg-9"> {% include 'posts/comments.html' %} </div>
-
+    <div class="col-lg-2 order-3 order-lg-3">
+        <div class="sidebar border rounded">
+          <div class=" mb-2">
+			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+				   crossorigin="anonymous"></script>
+			  <!-- lateral -->
+			  <ins class="adsbygoogle"
+				   style="display:block"
+				   data-ad-client="ca-pub-1810411345881098"
+				   data-ad-slot="6899621083"
+				   data-ad-format="auto"
+				   data-full-width-responsive="true"></ins>
+			  <script>
+				   (adsbygoogle = window.adsbygoogle || []).push({});
+			  </script>
+		  </div>
+        </div>
+      </div>
   </div>
 </section>
 <!-- /details page -->

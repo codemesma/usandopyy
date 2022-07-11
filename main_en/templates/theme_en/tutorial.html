@@ -2,27 +2,29 @@
   <article class="row mb-5">
     <div class="col-md-4 mb-4 mb-md-0">
       <div class="post-slider slider-sm">
-        <img
-          loading="lazy"
+          <a class="post-title" href="{% url 'tutorial-view_en' t.slug %}">
+
+          <img loading="lazy"
           src="{{ t.featured_image.url }}"
           class="img-fluid"
           alt="post-thumb"
-          style="height: 200px; object-fit: cover"
+
         />
+          </a>
       </div>
     </div>
     <div class="col-md-8">
       <h3 class="h5">
-        <a class="post-title" href="{% url 'tutorial-view' t.slug %}"
-          >{{t.title}} Coffee</a
+        <a class="post-title" href="{% url 'tutorial-view_en' t.slug %}"
+          >{{t.title}}</a
         >
       </h3>
       <ul class="list-inline post-meta mb-2">
-        <li class="list-inline-item">Data : {{t.updated_on}}</li>
+        <li class="list-inline-item">Daten : {{t.updated_on}}</li>
         <li class="list-inline-item">
-          Categoria :
+          Category :
           <a
-            href="{% url 'categoria-view' t.category.slug  %}"
+            href="{% url 'categoria-view_en' t.category.slug  %}"
             class="ml-1"
             >{{t.category}}
           </a>
@@ -31,17 +33,22 @@
       <p>
         {{ t.meta_description|safe|truncatewords_html:15 }}
       </p>
-      <a
-        href="{% url 'tutorial-view' t.slug %}"
-        class="btn btn-outline-primary"
-        >continue lendo</a
-      >
+
     </div>
   </article>
 {% endfor %}
 
-<div class="">
-  <div class="post-slider slider-sm">
-    <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
-  </div>
-</div>
+<div class=" mt-4 mb-5">
+			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+				   crossorigin="anonymous"></script>
+			  <!-- lateral -->
+			  <ins class="adsbygoogle"
+				   style="display:block"
+				   data-ad-client="ca-pub-1810411345881098"
+				   data-ad-slot="6899621083"
+				   data-ad-format="auto"
+				   data-full-width-responsive="true"></ins>
+			  <script>
+				   (adsbygoogle = window.adsbygoogle || []).push({});
+			  </script>
+		  </div>

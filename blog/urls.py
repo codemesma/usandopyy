@@ -9,7 +9,6 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import views as sitemap_views
 from main.sitemaps import StaticViewSitemap, TutorialViewSitemap, PostViewSitemap
 
-from classroom.views import classroom, students, teachers
 from django.contrib.auth import views as auth_views
 
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -41,17 +40,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('django_blog_it.urls')),
     path('blog_en/', include('django_blog_it_en.urls')),
+    url(r'^quiz/', include('quiz.urls')),
     path('sitemaps.xml/', sitemap, {'sitemaps': sitemaps}),
     #url(r'^accounts/', include('allauth.urls')),
 
-    path('quiz/', include('classroom.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     # path('accounts/login/', auth_views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('accounts/', include('django.contrib.auth.urls'),name='signup_'),
-    path('accounts/signup/', students.StudentSignUpView.as_view(), name='signup'),
-    # path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
-    path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
-
+    
     path("ads.txt", RedirectView.as_view(url=staticfiles_storage.url("ads.txt")),),
 
 

@@ -13,8 +13,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=5"
     />
-    
-    
+
+
     <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
 
     <meta name="google-site-verification" content="zddSG9Su1C2rFiH4lBf8Hq7b27P57AS9epwNWWRNly8" />
@@ -22,7 +22,7 @@
     <meta name="verify-admitad" content="d73d18973a" />
 
     {% block description %}
-    
+
     <link rel="canonical" href="{{ request.build_absolute_uri }}" />
     <meta property="og:url" content="{{ request.build_absolute_uri }}" />
     <meta property="og:image" content="{{ object.featured_image.url }}" />
@@ -53,6 +53,22 @@
       rel="stylesheet"
     />
 
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+
     <!-- plugins -->
     <link
       rel="preload"
@@ -76,9 +92,10 @@
     <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}" />
 
     <!-- Main Stylesheet -->
-   
+
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/style.css' %}" rel="stylesheet" />
+
+
 
     <!--Favicon-->
     <link
@@ -111,7 +128,9 @@
     {% endblock %}  {% display_cookie_consent %}
 
     <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
-    
+
+
+
   </head>
 
   <body>
