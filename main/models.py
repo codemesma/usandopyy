@@ -122,6 +122,7 @@ class Categoria(models.Model):
         upload_to='static/categoria/uploads/%Y/%m/%d/', blank=True, null=True)
     tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
     slug = models.CharField(max_length=200, unique=True)
+    
     description = RichTextUploadingField(blank=True, null=True, config_name='special', external_plugin_resources=[
         ('youtube', '/static/ckeditor/ckeditor_plugins/youtube/', 'plugin.js',)],)
     is_active = models.BooleanField(default=False)

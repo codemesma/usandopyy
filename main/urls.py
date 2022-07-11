@@ -6,6 +6,7 @@ from django.contrib import admin
 admin.autodiscover()
 admin.site.enable_nav_sidebar = False
 
+
 urlpatterns = [
 
     path('categoria/<int:id>/',SelectedCategoryView.as_view(), name='categoria-page'),

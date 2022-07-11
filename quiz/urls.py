@@ -3,6 +3,8 @@ try:
     from django.conf.urls import url
 except ImportError:
     from django.urls import re_path as url
+    
+from django.urls import path
 
 from .views import QuizListView, CategoriesListView, \
     ViewQuizListByCategory, QuizUserProgressView, QuizMarkingList, \
@@ -17,10 +19,8 @@ urlpatterns = [
     url(r'^category/$',
         view=CategoriesListView.as_view(),
         name='quiz_category_list_all'),
-
-    url(r'^category/(?P<category_name>[\w|\W-]+)/$',
-        view=ViewQuizListByCategory.as_view(),
-        name='quiz_category_list_matching'),
+    
+    path('category/<str:slug>/', ViewQuizListByCategory.as_view(), name='quiz_category_list_matching'),
 
     url(r'^progress/$',
         view=QuizUserProgressView.as_view(),

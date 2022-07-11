@@ -9,7 +9,8 @@ from django.views.generic import DetailView, ListView, TemplateView, FormView
 from .forms import QuestionForm, EssayForm
 from .models import Quiz, Category, Progress, Sitting, Question
 from essay.models import Essay_Question
-
+from django_blog_it.django_blog_it.models import Post, Canal, Equipa
+from main.models import Sobre
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
@@ -34,6 +35,18 @@ class QuizListView(ListView):
     def get_queryset(self):
         queryset = super(QuizListView, self).get_queryset()
         return queryset.filter(draft=False)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(QuizListView, self).get_context_data(*args, **kwargs)
+
+        context['canal'] = Canal.objects.all().order_by('id')
+        context['equipa'] = Equipa.objects.all().order_by('id')
+        context['sobre'] = Sobre.objects.all()
+        
+        context['categoria'] = Category.objects.all().order_by('category')
+        
+
+        return context
 
 
 class QuizDetailView(DetailView):
@@ -59,9 +72,7 @@ class ViewQuizListByCategory(ListView):
     template_name = 'view_quiz_category.html'
 
     def dispatch(self, request, *args, **kwargs):
-        self.category = get_object_or_404(
-            Category,
-            category=self.kwargs['category_name']
+        self.category = get_object_or_404(Category,slug=self.kwargs['slug']
         )
 
         return super(ViewQuizListByCategory, self).\

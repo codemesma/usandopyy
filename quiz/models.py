@@ -14,6 +14,9 @@ from django.conf import settings
 
 from model_utils.managers import InheritanceManager
 
+from django.template.defaultfilters import slugify
+
+
 
 class CategoryManager(models.Manager):
 
@@ -32,8 +35,19 @@ class Category(models.Model):
         verbose_name=_("Category"),
         max_length=250, blank=True,
         unique=True, null=True)
+    slug = models.CharField(max_length=200, unique=True)
 
     objects = CategoryManager()
+    
+    def get_absolute_url(self):
+        kwargs = {
+
+            'slug': self.slug
+        }
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.category)
+        super(Category, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Category")
