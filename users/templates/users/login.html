@@ -27,6 +27,14 @@
                                 <div class="form-row">
                                     <div class="col-md-10 offset-md-1">
                                         <div class="form-group">
+                                            <label class="small mb-1">Nome de usuário</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
                                           <label class="small mb-1">Password</label>
                                           {{ form.password }}
                                         </div>
@@ -37,14 +45,14 @@
                                         <div class="form-group">
                                             <!-- Add a Remember me functionality -->
                                             {{ form.remember_me }}
-                                            <label> Remember me</label>
+                                            <label> Lembre de mim</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-10 offset-md-1">
                                         <div class="form-group mt-0 mb-1">
-                                          <button name="login" class="col-md-12 btn btn-dark" id="login">Sign in</button>
+                                          <button name="login" class="col-md-12 btn btn-dark" id="login">Entrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -52,8 +60,7 @@
                         </div>
                         <div class="card-footer text-center">
                             <div class="small">
-                                <a href="{% url 'users-register' %}">Don't have an account yet? Go to signup</a><br>
-                                <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
+                                <a href="{% url 'users-register' %}">Não tem uma conta ainda? Criar uma</a><br>
                             </div>
                         </div>
                     </div>
