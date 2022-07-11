@@ -26,7 +26,7 @@
         {% endif %}
         <p class="my-4">{{ quiz.description }}</p>
         <p class="my-5">
-          <a class="btn btn-primary" href="{% url 'quiz_question' quiz_name=quiz.url %}">
+          <a class="btn btn-dark btn-rounded" href="{% url 'quiz_question' quiz_name=quiz.url %}">
             {% trans "Start quiz" %}
           </a>
         </p>
