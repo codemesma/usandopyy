@@ -193,7 +193,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-LOGIN_REDIRECT_URL = 'users-home'
+LOGIN_REDIRECT_URL = 'quiz_index'
 LOGIN_URL = 'login'
 
 # social auth configs for github

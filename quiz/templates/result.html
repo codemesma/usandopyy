@@ -103,6 +103,10 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
         <hr />
 
         {% endfor %} {% endif %}
+
+        <a type="button" class="btn btn-info btn-rounded btn-sm" href="{% url 'quiz_progress' %}">
+          Ver estatísticas dos meus resultados
+        </a>
       </div>
     </div>
   </div>
