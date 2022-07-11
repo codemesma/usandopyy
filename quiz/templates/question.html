@@ -14,7 +14,7 @@
 		<aside class="col-lg-4 order-2 order-lg-1 border-right">
 			{% if previous.answers %}
 
-				<p class="muted"><small>{% trans "The previous question" %}:</small></p>
+				<p class="muted"><small>{% trans "A pergunta anterior" %}:</small></p>
 				<p>{{ previous.previous_question }}</p>
 
 				{% if previous.previous_outcome %}
@@ -23,7 +23,7 @@
 					<div class="alert alert-warning">
 				{% endif %}
 					<p><small>
-						{% trans "Your answer was" %} </small>
+						{% trans "Sua resposta foi" %} </small>
 						<strong>
 						{{ previous.previous_outcome|yesno:"correct,incorrect" }}
 						</strong>
@@ -33,7 +33,7 @@
 
 					{% include 'correct_answer.html' %}
 
-					<p><strong>{% trans "Explanation" %}:</strong></p>
+					<p><strong>{% trans "Explicação" %}:</strong></p>
 					<div class="well " style="background-color: #fcf8e3;">
 					<p>{{ previous.previous_question.explanation }}</p>
 					</div>
@@ -57,7 +57,7 @@
 			{% endif %}
 			
 			<p>
-			  <small class="muted">{% trans "Question category" %}:</small>
+			  <small class="muted">{% trans "Categoria da pergunta" %}:</small>
 			  <strong>{{ question.category }}</strong>
 			</p>
 			
@@ -79,7 +79,7 @@
 				{% endfor %}
 			
 			  </ul>
-			  <input type="submit" value={% trans "Check" %} class="btn btn-large btn-block btn-warning my-4" >
+			  <input type="submit" value={% trans "Verificar" %} class="btn btn-large btn-block btn-warning my-4" >
 			</form>
 			
 			{% endif %}

@@ -3,22 +3,22 @@
 
 {% load quiz_tags %}
 
-{% block title %} {% trans "Progress Page" %} {% endblock %}
-{% block description %} {% trans "User Progress Page" %} {% endblock %}
+{% block title %} {% trans "Página de progresso" %} {% endblock %}
+{% block description %} {% trans "Página de progresso do usuário" %} {% endblock %}
 
 {% block content %}
 
   {% if cat_scores %}
 
-  <h1>{% trans "Question Category Scores" %}</h1>
+  <h1>{% trans "Pontuações das Categorias de Pergunta" %}</h1>
 
-  <table class="table table-bordered table-striped">
+  <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
 	<thead>
 	  <tr>
-		<th>{% trans "Category" %}</th>
-		<th>{% trans "Correctly answererd" %}</th>
-		<th>{% trans "Incorrect" %}</th>
+		<th>{% trans "Categoria" %}</th>
+		<th>{% trans "Respondeu corretamente" %}</th>
+		<th>{% trans "Incorreta" %}</th>
 		<th>%</th>
 	  </tr>
 	</thead>
@@ -47,18 +47,18 @@
 
   <hr>
 
-  <h1>{% trans "Previous exam papers" %}</h1>
+  <h1>{% trans "Provas anteriores" %}</h1>
   <p class="lead">
-	{% trans "Below are the results of exams that you have sat." %}
+	{% trans "Abaixo estão os resultados dos exames que você fez." %}
   </p>
 
-  <table class="table table-bordered table-striped">
+  <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
 	<thead>
 	  <tr>
-		<th>{% trans "Quiz Title" %}</th>
-		<th>{% trans "Score" %}</th>
-		<th>{% trans "Possible Score" %}</th>
+		<th>{% trans "Titúlo do Quiz" %}</th>
+		<th>{% trans "Pontuação" %}</th>
+		<th>{% trans "Pontuação possível" %}</th>
 		<th>%</th>
 	  </tr>
 	</thead>
