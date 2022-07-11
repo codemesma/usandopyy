@@ -20,7 +20,7 @@
 				{% if previous.previous_outcome %}
 					<div class="alert alert-success">
 				{% else %}
-					<div class="alert alert-warning">
+					<div class="alert alert-danger">
 				{% endif %}
 					<p><small>
 						{% trans "Sua resposta foi" %} </small>
@@ -33,8 +33,8 @@
 
 					{% include 'correct_answer.html' %}
 
-					<p><strong>{% trans "Explicação" %}:</strong></p>
-					<div class="well " style="background-color: #fcf8e3;">
+					<p class="mt-5"><strong>{% trans "Explicação" %}:</strong></p>
+					<div class="well " >
 					<p>{{ previous.previous_question.explanation }}</p>
 					</div>
 
@@ -52,7 +52,7 @@
 
 			{% if progress %}
 			<div style="float: right;">
-			{% trans "Question" %} {{ progress.0|add:1 }} {% trans "of" %} {{ progress.1 }}
+				{% trans "Pergunta" %} {{ progress.0|add:1 }} {% trans " de " %} {{ progress.1 }}
 			</div>
 			{% endif %}
 			

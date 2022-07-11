@@ -76,11 +76,11 @@
 
 		  <thead>
 			<tr>
-			  <th>{% trans "Title" %}</th>
-			  <th>{% trans "Category" %}</th>
-			  <th>{% trans "Exam" %}</th>
-			  <th>{% trans "Single attempt" %}</th>
-			  <th></th>
+				<th>{% trans "Título" %}</th>
+				<th>{% trans "Categoria" %}</th>
+				<th>{% trans "Exame" %}</th>
+				<th>{% trans "Tentativa única" %}</th>
+				<th></th>
 			</tr>
 		  </thead>
 
@@ -95,7 +95,7 @@
 			  <td>{{ quiz.single_attempt }}</td>
 			  <td>
 				<a href="{% url 'quiz_start_page' slug=quiz.url %}">
-				  {% trans "View details" %}
+				  {% trans "Tentar" %}
 				</a>
 			</tr>
 

@@ -17,9 +17,10 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
           </strong>
         </p>
         {% include 'correct_answer.html' %}
-        <p><strong>{% trans "Explicação" %}:</strong></p>
-        <div class="well" style="background-color: #fcf8e3">
-          <p>{{ previous.previous_question.explanation }}</p>
+        <p class="mt-5"><strong>{% trans "Explicação" %}:</strong></p>
+        <hr>
+        <div class="well" >
+          <p>{{ previous.previous_question.explanation | safe }}</p>
         </div>
         <hr />
 
@@ -40,15 +41,15 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
             <strong>{{ quiz.title }}</strong>
           </p>
 
-          <p class="lead">
+          <p class="">
             {% trans "Você respondeu" %} {{ score }} {% trans "perguntas corretamente fora" %} 
-            {{ max_score }}, {% trans "dando-lhe" %} {{percent }} 
+            {{ max_score }}, {% trans "dando-lhe" %} <span class="badge bg-primary">{{percent }} %</span>
             {% trans "por cento correto" %}
           </p>
 
           {% if quiz.pass_mark %}
           <hr />
-          <p class="lead">{{ sitting.result_message }}</p>
+          <p class="">{{ sitting.result_message }}</p>
           <hr />
 
           {% endif %}
@@ -83,7 +84,7 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
 
         {% endif %}
 
-        
+
         {% if questions %} {% for question in questions %}
 
         <p class="lead">{{ question.content }}</p>

@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% trans "All Quizzes" %}{% endblock %}
+{% block title %}{% trans "Todos os testes" %}{% endblock %}
 
 {% block content %}
-<h2>{% trans "List of complete exams" %}</h2>
+<h2>{% trans "Lista de exames completos" %}</h2>
     {% if sitting_list %}
 
-		<table class="table table-bordered table-striped">
+		<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
 		  <thead>
 			<tr>
-			  <th>{% trans "User" %}</th>
-			  <th>{% trans "Quiz" %}</th>
-			  <th>{% trans "Completed" %}</th>
-			  <th>{% trans "Score" %}(%)</th>
+				<th>{% trans "Usuário" %}</th>
+				<th>{% trans "Teste" %}</th>
+				<th>{% trans "Concluído" %}</th>
+				<th>{% trans "Pontuação" %}(%)</th>
 			  <th></th>
 			</tr>
 		  </thead>
@@ -25,7 +25,7 @@
 				<td><input type="text" name="quiz_filter" /></td>
 				<td></td>
 				<td></td>
-				<td><button type="submit" class="btn btn-default">{% trans "Filter"%}</button></td>
+				<td><button type="submit" class="btn btn-default">{% trans "Filtro"%}</button></td>
 			  </form>
 			</tr>
 
@@ -49,6 +49,6 @@
 
 		</table>
     {% else %}
-        <p>{% trans "There are no matching quizzes" %}.</p>
+        <p>{% trans "Não há questionários correspondentes" %}.</p>
     {% endif %}
 {% endblock %}
