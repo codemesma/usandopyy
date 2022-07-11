@@ -24,7 +24,7 @@
         {% if quiz.single_attempt %}
         <h4>{% trans "Você só terá uma tentativa neste quiz" %}.</h4>
         {% endif %}
-        <p class="my-4">{{ quiz.description }}</p>
+        <p class="my-4">{{ quiz.description | safe }}</p>
         <p class="my-5">
           <a class="btn btn-dark btn-rounded" href="{% url 'quiz_question' quiz_name=quiz.url %}">
             {% trans "Start quiz" %}

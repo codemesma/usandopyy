@@ -12,6 +12,9 @@ from essay.models import Essay_Question
 from django_blog_it.django_blog_it.models import Post, Canal, Equipa
 from main.models import Sobre
 
+from users.models import Profile
+
+
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
     @method_decorator(permission_required('quiz.view_sittings'))
@@ -27,6 +30,7 @@ class SittingFilterTitleMixin(object):
             queryset = queryset.filter(quiz__title__icontains=quiz_filter)
 
         return queryset
+    
 
 
 class QuizListView(ListView):
@@ -61,6 +65,18 @@ class QuizDetailView(DetailView):
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(QuizDetailView, self).get_context_data(*args, **kwargs)
+
+        context['canal'] = Canal.objects.all().order_by('id')
+        context['equipa'] = Equipa.objects.all().order_by('id')
+        context['sobre'] = Sobre.objects.all()
+        
+        context['categoria'] = Category.objects.all().order_by('category')
+        
+
+        return context
 
 
 class CategoriesListView(ListView):
@@ -87,6 +103,11 @@ class ViewQuizListByCategory(ListView):
         context['categoria'] = Category.objects.all().order_by('category')
 
         context['category'] = self.category
+        context['canal'] = Canal.objects.all().order_by('id')
+        context['equipa'] = Equipa.objects.all().order_by('id')
+        context['sobre'] = Sobre.objects.all()
+        
+        context['categoria'] = Category.objects.all().order_by('category')
         return context
 
     def get_queryset(self):
@@ -122,6 +143,20 @@ class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
             queryset = queryset.filter(user__username__icontains=user_filter)
 
         return queryset
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(QuizMarkingList, self).get_context_data(*args, **kwargs)
+
+        context['canal'] = Canal.objects.all().order_by('id')
+        context['equipa'] = Equipa.objects.all().order_by('id')
+        context['sobre'] = Sobre.objects.all()
+        
+        context['users'] = Profile.objects.all()
+        
+        context['categoria'] = Category.objects.all().order_by('category')
+        
+
+        return context
 
 
 class QuizMarkingDetail(QuizMarkerMixin, DetailView):

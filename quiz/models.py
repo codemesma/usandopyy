@@ -15,6 +15,10 @@ from django.conf import settings
 from model_utils.managers import InheritanceManager
 
 from django.template.defaultfilters import slugify
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+
+
 
 
 
@@ -85,9 +89,9 @@ class Quiz(models.Model):
         verbose_name=_("Title"),
         max_length=60, blank=False)
 
-    description = models.TextField(
-        verbose_name=_("Description"),
-        blank=True, help_text=_("a description of the quiz"))
+    description = RichTextUploadingField(blank=True, null=True, config_name='special', external_plugin_resources=[
+        ('youtube', '/static/ckeditor/ckeditor_plugins/youtube/', 'plugin.js',)],)
+    
 
     url = models.SlugField(
         max_length=60, blank=False,
@@ -208,7 +212,7 @@ class Progress(models.Model):
     """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_("User"), on_delete=models.CASCADE)
 
-    score = models.CharField(max_length=1024,
+    score = models.CharField(max_length=2024,
                              verbose_name=_("Score"),
                              validators=[validate_comma_separated_integer_list])
 
