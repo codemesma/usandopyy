@@ -1,0 +1,78 @@
+{% extends "users/base.html" %}
+{% block title %} UsandoPy -  {% endblock title%}
+{% block content %}
+    <section class="section mt-0">
+        <div class="container">
+          <div class="row">
+            <aside class="col-lg-4 order-2 order-lg-1 border-right">
+              <!-- Search -->
+              <div class="widget py-0">
+                <h5 class="widget-title"><span>Pesquisar</span></h5>
+                <div class="">
+                  <script async src="https://cse.google.com/cse.js?cx=e542ecd9cf3c36e91"></script>
+                        <div class="gcse-search"></div>
+                <div class=" mt-4 mb-5">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                         crossorigin="anonymous"></script>
+                    <!-- lateral -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-1810411345881098"
+                         data-ad-slot="6899621083"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+              </div>
+      
+              <!--  block news -->
+              {% block news %} {% include 'theme/news.html' %} {% endblock %}
+    
+              <!--  block ads_2 -->
+              {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+            </aside>
+      
+            <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+             
+                <div class="jumbotron">
+                    <h1 class="display-4">Seja bem-vindo, {{user.first_name.title|default:'Guest'}}</h1>
+                    <p class="lead">
+                        Espero que você goste de vários tutoriais e projetos gratuitos.
+                        Você gostaria de testar seu conhecimento?, então clique no botão abaixo para começar.
+                    </p>
+
+                    <p class="lead">
+                        {% if user.is_authenticated %}
+                            <a class="btn btn-primary btn-lg" href="{% url 'quiz_index' %}" role="button">Testar meus conhecimentos</a>
+                        {% else %}
+                            <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Testar meus conhecimentos</a>
+                        {% endif %}
+                    </p>
+
+                    <hr class="my-4">
+
+                    <h1 class="display-4">Be welcome., {{user.first_name.title|default:'Guest'}}</h1>
+                    <p class="lead"> 
+I hope you enjoy several free Tutorials and projects. 
+Would you like to test your Knowledge?, then click the button below to get started.
+                    </p>
+
+                    
+                    <p class="lead">
+                        {% if user.is_authenticated %}
+                            <a class="btn btn-primary btn-lg" href="{% url 'quiz_index' %}" role="button">Test my knowledge</a>
+                        {% else %}
+                            <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Test my knowledge</a>
+                        {% endif %}
+                    </p>
+                    
+                </div>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+
+{% endblock content %}

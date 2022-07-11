@@ -33,7 +33,7 @@
                   <a class="nav-link" href="{% url 'quiz_index' %}"><i class="fas fa-question-circle"></i> Quiz</a>
                </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-blog"></i> Blogue de programação</a>
+                   <a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-blog"></i> Blogue programação</a>
                 </li>
                 <li class="nav-item">
                    <a class="nav-link" href="{% url 'newspaper:noticias' %}"><i class="fas fa-newspaper"></i> Notícias de tecnologia</a>
@@ -41,6 +41,16 @@
                 <li class="nav-item ">
                      <a class="nav-link " href="{% url 'home-page_en' %}"><i class="fa fa-language" aria-hidden="true"></i> English</a>
                </li>
+
+               <div class="navbar-nav ml-auto">
+                  {% if user.is_authenticated %}
+                    <a href="{% url 'users-profile' %}" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                    <a href="{% url 'logout' %}" class="nav-item nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                  {% else %}
+                    <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign in</a>
+                  {% endif %}
+
+                </div>
 
 
              </ul>

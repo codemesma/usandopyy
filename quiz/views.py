@@ -65,6 +65,8 @@ class QuizDetailView(DetailView):
 
 class CategoriesListView(ListView):
     model = Category
+    
+    
 
 
 class ViewQuizListByCategory(ListView):
@@ -81,6 +83,8 @@ class ViewQuizListByCategory(ListView):
     def get_context_data(self, **kwargs):
         context = super(ViewQuizListByCategory, self)\
             .get_context_data(**kwargs)
+            
+        context['categoria'] = Category.objects.all().order_by('category')
 
         context['category'] = self.category
         return context
