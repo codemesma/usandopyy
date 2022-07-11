@@ -1,3 +1,4 @@
+from django.conf.urls.static import static
 try:
     from django.conf.urls import url
 except ImportError:

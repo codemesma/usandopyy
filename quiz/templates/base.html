@@ -1,37 +1,176 @@
-{% load i18n %}
+{% load i18n %} {% load static %}
+<!--cookies-->
+{% load django_simple_cookie_consent_tags %}
 <!DOCTYPE html>
-<html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+<html lang="en-us">
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8" />
+  <title></title>
 
-<title>{% trans "Example Quiz Website" %} | {% block title %}{% endblock %}</title>
-<meta name="description" content="{% block description %}{% endblock %}">
+  <!-- mobile responsive meta -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
 
-<!-- styles -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4" />
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+  <meta
+    name="google-site-verification"
+    content="zddSG9Su1C2rFiH4lBf8Hq7b27P57AS9epwNWWRNly8"
+  />
 
+  <meta name="verify-admitad" content="d73d18973a" />
+
+  {% block descriptio %}
+
+  <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:image" content="{{ object.featured_image.url }}" />
+  <meta
+    property="og:image:secure_url"
+    content="{{ object.featured_image.url }}"
+  />
+  <meta property="og:image:width" content="300" />
+  <meta property="og:image:height" content="300" />
+  <meta name="twitter:image" content="{{ object.featured_image.url }}" />
+  <meta name="twitter:card" content="summary" />
+
+  <meta property="og:title" content="{{ title }}" />
+  <meta
+    property="og:description"
+    content="{{ description|truncatechars:160 }}"
+  />
+
+  <meta name="title" content="{{ title }}" />
+  <meta name="description" content="{{ description|truncatechars:160 }}" />
+  <meta name="keywords" content="{{ keywords }}" />
+  <meta name="author" content="{{ author }}" />
+  <meta name="robots" content="index, follow" />
+
+  {% trans "Quiz" %} | {% block title %}{% endblock %}
+
+  <meta name="description" content="{% block description %}{% endblock %}" />
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- plugins -->
+  <link
+    rel="preload"
+    href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2"
+    style="font-display: optional"
+  />
+  <link
+    rel="stylesheet"
+    href="{% static 'plugins/bootstrap/bootstrap.min.css' %}"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Montserrat:600%7cOpen&#43;Sans&amp;display=swap"
+    media="screen"
+  />
+
+  <link
+    rel="stylesheet"
+    href="{% static 'plugins/themify-icons/themify-icons.css' %}"
+  />
+  <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}" />
+
+  <!-- Main Stylesheet -->
+
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link
+    rel="shortcut icon"
+    href="{% static 'logo.png' %}"
+    type="image/x-icon"
+  />
+  <link rel="icon" href="{% static 'logo.png' %}" type="image/x-icon" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/agate.min.css"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-VS65HDVLGL"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-VS65HDVLGL");
+  </script>
+
+  <!-- Google Ads -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+    crossorigin="anonymous"
+  ></script>
+  {% endblock %} {% display_cookie_consent %}
+
+  <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4" />
 </head>
 
 <body>
+    <!-- Navbar -->
+
+    {% block navbar %} {% include 'theme/navbar.html' %} {% endblock %}
+
+    <!-- Navbar -->
+
+    <!-- Home -->
+    {% block home %}
+    <!--  block content -->
+    {% block content %} {% include 'quiz/home.html' %} {% endblock content %}
+    <!-- /.content -->
+    {% endblock home %}
+    <!-- /.Home -->
+
+    <!--  block footer -->
+    {% block footer %} {% include 'bases/footer.html' %} {% endblock footer %}
+    <!-- /.footer -->
 
 
-<!-- Before the quiz content -->
+<!-- JS Plugins -->
+<script src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/slick/slick.min.js' %}"></script>
 
-<div class="container">
-
-{% block content %}
-
-{% endblock %}
-
-</div>
-
-<!-- After the quiz content -->
-
-
+<!-- Main Script -->
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

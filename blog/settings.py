@@ -34,8 +34,8 @@ INSTALLED_APPS = [
     'main_es',
     'mainsite.apps.MainsiteConfig',
     'mainsite_en.apps.Mainsite_enConfig',
-    'news.apps.NewsConfig',
-    'news_en.apps.News_enConfig',
+    'news',
+    'news_en',
     'quiz',
     'multichoice',
     'true_false',
@@ -172,22 +172,15 @@ LANGUAGE_CODE = 'en'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
-STATIC_ROOT= "/static/"
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (BASE_DIR,"static")
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
 
 
 # Custom Django auth settings
