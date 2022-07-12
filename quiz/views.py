@@ -108,6 +108,10 @@ class ViewQuizListByCategory(ListView):
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
         
+        context['users'] = Profile.objects.all()
+        
+        context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-current_score')
+        
         context['categoria'] = Category.objects.all().order_by('category')
         return context
 
