@@ -32,15 +32,23 @@ INSTALLED_APPS = [
     'main',
     'main_en',
     'main_es',
-    'mainsite.apps.MainsiteConfig',
-    'mainsite_en.apps.Mainsite_enConfig',
+    'mainsite',
+    'mainsite_en',
     'news',
     'news_en',
+    
     'quiz',
     'multichoice',
     'true_false',
     'essay',
     'users.apps.UserConfig',
+    
+    'quiz_en',
+    'multichoice_en',
+    'true_false_en',
+    'essay_en',
+    'users_en.apps.User_enConfig',
+    
     'social_django',
     
     'ckeditor',

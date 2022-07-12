@@ -1,0 +1,115 @@
+{% extends "base.html" %} {% load i18n %} {% load quiz_tags %} {% block title %}
+{{ quiz.title}} {% endblock %} {% block description %} {% trans "Resultados do
+exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
+
+<section class="section mt-0">
+  <div class="container">
+    <div class="row">
+      <aside class="col-lg-4 order-2 order-lg-1 border-right">
+        {% if previous.answers %}
+
+        <p class="muted"><small>{% trans "A pergunta anterior" %}:</small></p>
+        <p>{{ previous.previous_question }}</p>
+        <p>
+          Sua resposta foi
+          <strong>
+            {{ previous.previous_outcome|yesno:"correct,incorrect" }}
+          </strong>
+        </p>
+        {% include 'correct_answer.html' %}
+        <p class="mt-5"><strong>{% trans "Explicação" %}:</strong></p>
+        <hr>
+        <div class="well" >
+          <p>{{ previous.previous_question.explanation | safe }}</p>
+        </div>
+        <hr />
+
+        {% endif %} 
+        
+       
+        <!--  block ads_2 -->
+        {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+      </aside>
+
+      <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+        {% if max_score %}
+
+        <div>
+          <h2>{% trans "Resultados dos exames" %}</h2>
+          <p>
+            <small class="muted">{% trans "Título do exame" %}: </small>
+            <strong>{{ quiz.title }}</strong>
+          </p>
+
+          <p class="">
+            {% trans "Você respondeu" %} {{ score }} {% trans "perguntas corretamente fora" %} 
+            {{ max_score }}, {% trans "dando-lhe" %} <span class="badge bg-primary">{{percent }} %</span>
+            {% trans "por cento correto" %}
+          </p>
+
+          {% if quiz.pass_mark %}
+          <hr />
+          <p class="">{{ sitting.result_message }}</p>
+          <hr />
+
+          {% endif %}
+
+          <p>
+            Revise as perguntas abaixo e tente o exame novamente no
+            futuro
+          </p>
+
+          {% if user.is_authenticated %}
+
+          <p>
+            O resultado deste exame será armazenado em sua seção de
+            progresso para que você possa revisar e monitorar sua progressão"
+          </p>
+
+          {% endif %}
+        </div>
+
+        {% endif %}
+
+        <hr />
+
+        {% if possible %}
+
+        <p class="lead">
+          {% trans "A pontuação da sua sessão é" %} {{ session }} 
+          {% trans "fora de um possível" %} {{ possible }}
+        </p>
+
+        <hr />
+
+        {% endif %}
+
+
+        {% if questions %} {% for question in questions %}
+
+        <p class="lead">{{ question.content }}</p>
+
+        {% correct_answer_for_all question %} {% if question.user_answer %}
+        <p>
+          {% trans "Sua Resposta" %}: {{ question|answer_choice_to_string:question.user_answer }}
+        </p>
+        {% endif %}
+
+        <p><strong>{% trans "Explicação" %}:</strong></p>
+        <div class="well" style="background-color: #fcf8e3">
+          <p>{{ question.explanation|safe }}</p>
+        </div>
+
+        <hr />
+
+        {% endfor %} {% endif %}
+
+        <a type="button" class="btn btn-info btn-rounded btn-sm" href="{% url 'quiz_progress' %}">
+          Ver estatísticas dos meus resultados
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

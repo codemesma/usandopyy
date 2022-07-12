@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load quiz_tags %}
+
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+  <p>{% trans "Você já fez este exame e apenas uma sessão é permitida" %}.</p>
+{% else %}
+  <p>{% trans "Este exame só pode ser acessado por usuários conectados" %}.</p>
+{% endif %}
+
+{% endblock %}

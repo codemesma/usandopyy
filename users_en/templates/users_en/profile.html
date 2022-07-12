@@ -1,0 +1,66 @@
+{% extends "users/base.html" %} {% block title %}Profile 
+{% endblock title %} {% block content %}
+
+<section class="section mt-0 ">
+    <div class="row">
+    <aside class="col-lg-4 order-2 order-lg-1 border-right">
+        <!--  block ads_2 -->
+        {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+    </aside>
+    <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+        <div class="container">
+            <div class="">
+            <img
+                class="rounded-circle account-img"
+                src="{{ user.profile.avatar.url }} "
+                style="cursor: pointer"
+            />
+            </div>
+            {% if user_form.errors %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            {% endif %}
+            <div class="form-content">
+            <form class="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                    <label class="small mt-4">Nome de usuário:</label>
+                    {{ user_form.username }}
+                    <label class="small mt-4">Email:</label>
+                    {{ user_form.email }}
+                    </div>
+                    <div class="form-group">
+                    <a class="my-4" href="{% url 'password_change' %}">Mudar senha</a>
+                    <hr />
+                    <label class="small mb-1">Mudar foto:</label>
+                    {{ profile_form.avatar }}
+                    </div>
+                    <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+                </div>
+                </div>
+                <br /><br />
+                <button type="submit" class="btn btn-dark btn-lg">Salvar alterações</button>
+                <button type="reset" class="btn btn-dark btn-lg">Redefinir</button>
+            </form>
+            </div>
+        </div>
+    </div>
+        
+</section>
+
+{% endblock content %}

@@ -49,6 +49,7 @@ urlpatterns = [
     path('blog/', include('django_blog_it.urls')),
     path('blog_en/', include('django_blog_it_en.urls')),
     url(r'^quiz/', include('quiz.urls')),
+    url(r'^quiz_en/', include('quiz_en.urls')),
     path('sitemaps.xml/', sitemap, {'sitemaps': sitemaps}),
     
     path('user', include('users.urls')),
@@ -69,6 +70,30 @@ urlpatterns = [
          name='password_reset_complete'),
 
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
+    
+    #------------------------------------
+    
+    path('user_en', include('users.urls')),
+
+    path('login_en/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users_en/login.html',
+                                           authentication_form=LoginForm), name='login'),
+
+    path('logout_en/', auth_views.LogoutView.as_view(template_name='users_en/logout.html'), name='logout_en'),
+
+    path('password-reset/', ResetPasswordView.as_view(), name='password_reset_en'),
+
+    path('password-reset-confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='users_en/password_reset_confirm.html'),
+         name='password_reset_confirm_en'),
+
+    path('password-reset-complete_en/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='users_en/password_reset_complete.html'),
+         name='password_reset_complete_en'),
+
+    path('password-change_en/', ChangePasswordView.as_view(), name='password_change_en'),
+    
+    #-----------------------
+    
 
     url(r'^oauth/', include('social_django.urls', namespace='social')),
 
