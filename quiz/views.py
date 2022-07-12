@@ -40,13 +40,15 @@ class QuizListView(ListView):
         queryset = super(QuizListView, self).get_queryset()
         return queryset.filter(draft=False)
     
+    
     def get_context_data(self, *args, **kwargs):
         context = super(QuizListView, self).get_context_data(*args, **kwargs)
 
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
-        
+        context['users'] = Profile.objects.all()
+        context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-id')
         context['categoria'] = Category.objects.all().order_by('category')
         
 
@@ -81,7 +83,6 @@ class QuizDetailView(DetailView):
 
 class CategoriesListView(ListView):
     model = Category
-    
     
 
 

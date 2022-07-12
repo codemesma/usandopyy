@@ -10,44 +10,49 @@
 	<div class="container">
 	  <div class="row">
 		<aside class="col-lg-4 order-2 order-lg-1 border-right">
-		  <!-- Search -->
-		  <div class="widget py-0">
-			<h5 class="widget-title"><span>Search</span></h5>
-			<div class="">
-			  <script async src="https://cse.google.com/cse.js?cx=e542ecd9cf3c36e91"></script>
-					<div class="gcse-search"></div>
-			<div class=" mt-4 mb-5">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
-					 crossorigin="anonymous"></script>
-				<!-- lateral -->
-				<ins class="adsbygoogle"
-					 style="display:block"
-					 data-ad-client="ca-pub-1810411345881098"
-					 data-ad-slot="6899621083"
-					 data-ad-format="auto"
-					 data-full-width-responsive="true"></ins>
-				<script>
-					 (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		  </div>
-
-  
-		  <div class=" mb-5">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
-					 crossorigin="anonymous"></script>
-				<!-- lateral -->
-				<ins class="adsbygoogle"
-					 style="display:block"
-					 data-ad-client="ca-pub-1810411345881098"
-					 data-ad-slot="6899621083"
-					 data-ad-format="auto"
-					 data-full-width-responsive="true"></ins>
-				<script>
-					 (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-		   </div>
-  
+		  
+			<h4>{% trans "Resultados das últimas tentativas" %}</h4>
+			{% if sitting_list %}
+		
+				<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+		
+				  <thead>
+					<tr>
+						<th>{% trans "Avatar" %}</th>
+						<th>{% trans "Usuário" %}</th>
+						<th>{% trans "Teste" %}</th>
+						<th>{% trans "Pontuação" %}(%)</th>
+					</tr>
+				  </thead>
+		
+				  <tbody>
+				
+		
+				{% for sitting in sitting_list %}
+		
+					<tr>
+					  <td>
+						{% for photo in users %}
+							{% if photo.user == sitting.user %}
+						   		<img loading="lazy" src="{{ photo.avatar.url }}" class="img-fluid" alt="post-thumb"/>
+						    {% else %}
+							{% endif %}
+						{% endfor %}
+					  </td>
+					  <td>{{ sitting.user }}</td>
+					  <td>{{ sitting.quiz.category }}</td>
+					  <td>{{ sitting.get_percent_correct }}</td>
+					
+					</tr>
+		
+				{% endfor %}
+		
+				  </tbody>
+		
+				</table>
+			{% else %}
+				<p>{% trans "Não há questionários correspondentes" %}.</p>
+			{% endif %}
 		  <!--  block ads_2 -->
 		  {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
 		</aside>

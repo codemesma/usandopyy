@@ -7,12 +7,7 @@
 <section class="section mt-0">
 	<div class="container">
 	  <div class="row">
-		<aside class="col-lg-4 order-2 order-lg-1 border-right">
-		  <!--  block ads_2 -->
-		  {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
-		</aside>
-  
-		<div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+		<div class="col-lg-12 order-1 order-lg-2 mb-5 mb-lg-0">
 			<h2>{% trans "Lista de exames completos" %}</h2>
 			{% if sitting_list %}
 		
@@ -20,6 +15,7 @@
 		
 				  <thead>
 					<tr>
+						<th>{% trans "Avatar" %}</th>
 						<th>{% trans "Usuário" %}</th>
 						<th>{% trans "Teste" %}</th>
 						<th>{% trans "Concluído" %}</th>
@@ -31,6 +27,7 @@
 				  <tbody>
 					<tr>
 					  <form action="" method="GET">
+						<td></td>
 						<td><input type="text" name="user_filter" /></td>
 						<td><input type="text" name="quiz_filter" /></td>
 						<td></td>
@@ -43,12 +40,14 @@
 				{% for sitting in sitting_list %}
 		
 					<tr>
-					  <td><img loading="lazy"
-						src="{{ sitting.user.avatar.url }}"
-						class="img-fluid"
-						alt="post-thumb"
-			  
-					  /></td>
+					  <td>
+						{% for photo in users %}
+							{% if photo.user == sitting.user %}
+						   		<img loading="lazy" src="{{ photo.avatar.url }}" class="img-fluid" alt="post-thumb"/>
+						    {% else %}
+							{% endif %}
+						{% endfor %}
+					  </td>
 					  <td>{{ sitting.user }}</td>
 					  <td>{{ sitting.quiz }}</td>
 					  <td>{{ sitting.end|date }}</td>
