@@ -2,8 +2,6 @@
 {% load i18n %}
 {% block title %}{% trans "All Quizzes" %}{% endblock %}
 
-
-
 {% block content %}
 
 <section class="section mt-0">
@@ -11,7 +9,7 @@
 	  <div class="row">
 		<aside class="col-lg-4 order-2 order-lg-1 border-right">
 		  
-			<h4>{% trans "Resultados das últimas tentativas" %}</h4>
+			<h5 class="mb-4">{% trans "Resultados das últimas tentativas" %}</h5>
 			{% if sitting_list %}
 		
 				<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
