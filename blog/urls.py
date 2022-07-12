@@ -22,10 +22,15 @@ from django.conf.urls import handler404
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from django.contrib.auth import views as auth_views
-from users.views import CustomLoginView, ResetPasswordView, ChangePasswordView
 
+from users.views import CustomLoginView, ResetPasswordView, ChangePasswordView
 from users.forms import LoginForm
 
+from users_en.views import CustomLoginView as CustomLoginView_en
+from users_en.views import ResetPasswordView as ResetPasswordView_en
+from users_en.views import ChangePasswordView as ChangePasswordView_en
+
+from users_en.forms import LoginForm as LoginForm_en
 
 
 
@@ -73,14 +78,14 @@ urlpatterns = [
     
     #------------------------------------
     
-    path('user_en', include('users.urls')),
+    path('user_en', include('users_en.urls')),
 
-    path('login_en/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users_en/login.html',
+    path('login_en/', CustomLoginView_en.as_view(redirect_authenticated_user=True, template_name='users_en/login.html',
                                            authentication_form=LoginForm), name='login'),
 
     path('logout_en/', auth_views.LogoutView.as_view(template_name='users_en/logout.html'), name='logout_en'),
 
-    path('password-reset/', ResetPasswordView.as_view(), name='password_reset_en'),
+    path('password-reset_en/', ResetPasswordView_en.as_view(), name='password_reset_en'),
 
     path('password-reset-confirm/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(template_name='users_en/password_reset_confirm.html'),
@@ -90,7 +95,7 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users_en/password_reset_complete.html'),
          name='password_reset_complete_en'),
 
-    path('password-change_en/', ChangePasswordView.as_view(), name='password_change_en'),
+    path('password-change_en/', ChangePasswordView_en.as_view(), name='password_change_en'),
     
     #-----------------------
     
