@@ -13,30 +13,6 @@ from hitcount.settings import MODEL_HITCOUNT
 
 
 
-
-class Download(models.Model):
-    nome = models.CharField(max_length=500)
-    featured_image = models.ImageField(upload_to='static/categoria/uploads/%Y/%m/%d/', blank=True, null=True)
-    slug = models.CharField(max_length=250, unique=True)
-    description = RichTextUploadingField(blank=True, null=True, config_name='special', external_plugin_resources=[('youtube', '/static/ckeditor/ckeditor_plugins/youtube/', 'plugin.js',)],)
-    web = models.URLField('Web', null=True, blank=True)
-    meta_description = models.TextField(max_length=160, null=True, blank=True)
-    keywords = models.TextField(max_length=500, blank=True)
-
-    def get_absolute_url(self):
-        kwargs = {
-
-            'slug': self.slug
-        }
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.nome)
-        super(Download, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.nome
-
-
 class Book_Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.CharField(max_length=200, unique=True)
@@ -84,7 +60,7 @@ class Book(models.Model):
         }
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.title)
         super(Book, self).save(*args, **kwargs)
     
 
