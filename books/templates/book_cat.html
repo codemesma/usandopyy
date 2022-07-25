@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Categoria Livro {% endblock title %}
+{% block title %}Categoria - {{cat.name}} {% endblock title %}
 
 {% block content %}
 
@@ -62,7 +62,7 @@
             {% for b in book %}
             {% if object.id == b.category.id %}
             <div class="col-lg-6 mt-1">
-                <a href="{% url 'detail' b.id %}"><img src="{{ b.image_url.url }}" class="card-img-top" alt="..."></a>
+                <a href="{% url 'detail' slug=b.slug %}"><img src="{{ b.image_url.url }}" class="card-img-top" alt="..."></a>
 
                 <div class="card" >                    
                     <div class="card-body">
