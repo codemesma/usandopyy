@@ -49,12 +49,13 @@
                 <div class="card" >                    
                     <div class="card-body">
                         <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
+                        <small>Categoria : <a href="{% url 'book_cat' each.category.slug  %}" class="ml-1">{{each.category}}</a></small>
                         <p class="card-text">${{ each.price|floatformat:2 }}</p>                
                         {% if object.book_available is True %}
-                  <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
-                  {% else %}
-                  {{ object.buy | safe }}
-                  {% endif %}
+                        <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
+                        {% else %}
+                        {{ object.buy | safe }}
+                        {% endif %}
                     </div>
                 </div>
             </div>

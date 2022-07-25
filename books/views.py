@@ -54,6 +54,41 @@ class BooksListView(ListView):
         return context
 
 
+class BooksCategoryView(ListView):
+    model = Book_Category
+    template_name = 'book_cat.html'
+    query_pk_and_slug = True
+    
+    def get_home_page_post_list(self):
+        home_page_settings = HomePageSettings.objects.last()
+        news_list = News.objects.all()
+        post_catalog_one = news_list.filter(category=home_page_settings.post_catalog_one).order_by('-id')[:3]
+        post_catalog_two = news_list.filter(category=home_page_settings.post_catalog_two).order_by('-id')[:2]
+        post_catalog_three = news_list.filter(category=home_page_settings.post_catalog_three).order_by('-id')[:2]
+        post_catalog_four = news_list.filter(category=home_page_settings.post_catalog_four).order_by('-id')[:3]
+        post_catalog_five = news_list.filter(category=home_page_settings.post_catalog_five).order_by('-id')[:2]
+        return (home_page_settings.hot_news, post_catalog_one, post_catalog_two, post_catalog_three,
+                post_catalog_four, post_catalog_five, home_page_settings.trending, home_page_settings.editor_choice)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(BooksCategoryView, self).get_context_data(*args, **kwargs)
+        results = self.get_home_page_post_list()
+        
+        context['book'] = Book.objects.all()
+        
+        context['hot_news'] = results[0]
+        context['trending'] = results[6]
+        context['editor_choice'] = results[7]
+
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['canal'] = Canal.objects.all().order_by('id')
+        context['equipa'] = Equipa.objects.all().order_by('id')
+        context['sobre'] = Sobre.objects.all()
+        
+        return context
+
+
 class BooksDetailView(DetailView):
     model = Book
     template_name = 'detail.html'
