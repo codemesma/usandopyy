@@ -1,16 +1,16 @@
-<div class="widget">
-    <h5 class="widget-title"><span>Latest Posts</span></h5>
+<div class="widget rounded pt-3 px-2">
+    <h5 class="widget-title"><span>Latest Blog Posts</span></h5>
     <!-- post-item -->
     {% for b in post %}
     <ul class="list-unstyled widget-list">
       <li class="media  align-items-center ">
-         <a href="{% url 'blog_post_view' blog_slug=b.slug %}">
+         <a href="{% url 'blog_post_view_en' blog_slug=b.slug %}">
             <img loading="lazy" class="img-fluid mr-2 "
                    src="{{ b.featured_image.url }}"
                  style="height:65px; object-fit: cover;">
          </a>
          <div class="media-body">
-            <h5 class="h6 mb-0"><a class="py-5 font-weight-normal" href="{% url 'blog_post_view' blog_slug=b.slug %}" style="line-height:22px; font-size:13px;  ">{{ b.title }}</a></h5>
+            <h5 class="h6 mb-0"><a class="py-5 font-weight-normal" href="{% url 'blog_post_view_en' blog_slug=b.slug %}" style="line-height:22px; font-size:13px;  ">{{ b.title }}</a></h5>
             <small>{{b.updated_on}}</small>
          </div>
       </li>

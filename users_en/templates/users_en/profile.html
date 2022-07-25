@@ -1,4 +1,4 @@
-{% extends "users/base.html" %} {% block title %}Profile 
+{% extends "users_en/base.html" %} {% block title %}Profile
 {% endblock title %} {% block content %}
 
 <section class="section mt-0 ">
@@ -39,28 +39,28 @@
                 <div class="form-row">
                 <div class="col-md-5">
                     <div class="form-group">
-                    <label class="small mt-4">Nome de usuário:</label>
+                    <label class="small mt-4">User name:</label>
                     {{ user_form.username }}
                     <label class="small mt-4">Email:</label>
                     {{ user_form.email }}
                     </div>
                     <div class="form-group">
-                    <a class="my-4" href="{% url 'password_change' %}">Mudar senha</a>
+                    <a class="my-4" href="{% url 'password_change_en' %}">Change Password</a>
                     <hr />
-                    <label class="small mb-1">Mudar foto:</label>
+                    <label class="small mb-1">change photo:</label>
                     {{ profile_form.avatar }}
                     </div>
                     <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
                 </div>
                 </div>
                 <br /><br />
-                <button type="submit" class="btn btn-dark btn-lg">Salvar alterações</button>
-                <button type="reset" class="btn btn-dark btn-lg">Redefinir</button>
+                <button type="submit" class="btn btn-dark btn-lg">Save editions</button>
+                <button type="reset" class="btn btn-dark btn-lg">Reset</button>
             </form>
             </div>
         </div>
     </div>
-        
+
 </section>
 
 {% endblock content %}

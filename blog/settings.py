@@ -30,27 +30,28 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'main',
+    'books',
     'main_en',
     'main_es',
     'mainsite',
     'mainsite_en',
     'news',
     'news_en',
-    
+
     'quiz',
     'multichoice',
     'true_false',
     'essay',
     'users.apps.UserConfig',
-    
+
     'quiz_en',
     'multichoice_en',
     'true_false_en',
     'essay_en',
-    'users_en.apps.User_enConfig',
-    
+    'users_en',
+
     'social_django',
-    
+
     'ckeditor',
     'ckeditor_uploader',
 
@@ -128,7 +129,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
+
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
 

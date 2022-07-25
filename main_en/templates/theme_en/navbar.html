@@ -13,46 +13,43 @@
           </button>
 
           <div class="collapse navbar-collapse text-center py-0 my-0" id="navigation">
-             <ul class="navbar-nav ml-auto py-0 my-0">
-               <li class="nav-item ">
-                     <a class="nav-link " href="{% url 'home-page_en' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-               </li>
-                <li class="nav-item dropdown">
+             <ul class="navbar-nav mr-auto">
+
+               {% for t in tipo %}
+               <li class="nav-item dropdown">
                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                       aria-expanded="false">
-                      <i class="fas fa-code"></i> Programming language<i class="ti-angle-down ml-1"></i>
+                      {{t.name}}<i class="ti-angle-down ml-1"></i>
                    </a>
                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/python-beginners/">Python Beginners</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/python-intermediate/">Python Intermediate</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/python-advanced/">Python Advanced</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/en/category/sql-tutorial/">SQL Tutorial</a>
+                      {% for c in categoria1 %} {% if t.id == c.tipo.id %}
+                        <a class="dropdown-item" href="{% url 'categoria-view_en' c.slug  %}">
+                            <img
+        						class="h4"
+        						style="height: 22px; width: 22px;"
+        						class="card-img-top im"
+        						src="{{ c.featured_image.url }}"
+        						alt="Card image cap"
+        					  />
+        					  {{c.name}}
+                        </a>
+                      {% endif %} {% endfor %}
                    </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'quiz_index_en' %}"><i class="fas fa-question-circle"></i> Quiz</a>
-               </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="{% url 'index_en' %}"><i class="fa-solid fa-blog"></i> Programming Blog</a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="{% url 'newspaper_en:noticias_en' %}"><i class="fas fa-newspaper"></i> Tech News</a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link"  href="{% url 'home-page' %}"><i class="fa fa-language" aria-hidden="true"></i> Português</a>
-               </li>
 
-               <div class="navbar-nav ml-auto">
+                {% endfor %}
+
+
+             </ul>
+             <div class="navbar-nav ml-auto">
                   {% if user.is_authenticated %}
-                    <a href="{% url 'users_en:users-profile_en' %}" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                    <a href="{% url 'users-profile_en' %}" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
                     <a href="{% url 'logout_en' %}" class="nav-item nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                   {% else %}
                     <a href="{% url 'login_en' %}" class="nav-item nav-link"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign in</a>
                   {% endif %}
 
                 </div>
-
-             </ul>
 
           </div>
        </nav>

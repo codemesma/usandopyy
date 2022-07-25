@@ -1,0 +1,26 @@
+<div class="widget px-2">
+    <h5 class="widget-title pt-3"><span>Latest Tutorial</span></h5>
+    <!-- post-item -->
+    {% for t in tutorial %}
+    <ul class="list-unstyled widget-list">
+      <li class="media  align-items-center ">
+         <a href="{% url 'tutorial-view_en' t.slug %}">
+            <img loading="lazy" class="img-fluid mr-2 "
+                   src="{{ t.featured_image.url }}"
+                 style="height:65px; object-fit: cover;">
+         </a>
+         <div class="media-body">
+            <h5 class="h6 mb-0">
+                <a class="py-5 font-weight-normal" href="{% url 'tutorial-view_en' t.slug %}" style="line-height:22px; font-size:13px;  ">{{ t.title }}</a>
+            </h5>
+            <small>{{t.updated_on}}</small>
+            <small>Category : <a href="{% url 'categoria-view_en' t.category.slug  %}" class="ml-1">{{t.category}}</a></small>
+
+         </div>
+      </li>
+   </ul>
+   {% endfor %}
+
+ </div>
+
+ {% include 'theme/ads_2.html' %}

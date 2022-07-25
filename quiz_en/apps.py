@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class QuizConfig(AppConfig):
-    name = 'quiz' 
+class Quiz_enConfig(AppConfig):
+    name = 'quiz_en'

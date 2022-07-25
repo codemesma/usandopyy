@@ -10,58 +10,53 @@
 	<div class="container">
 	  <div class="row">
 		<aside class="col-lg-4 order-2 order-lg-1 border-right">
-		  
+
 			<h4 class="mb-4">{% trans "10 Melhores pontuações" %}</h4>
 			{% if sitting_list %}
-		
-				<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-		
-				  <thead>
-					<tr>
-						<th>{% trans "Avatar" %}</th>
-						<th>{% trans "Usuário" %}</th>
-						<th>{% trans "Teste" %}</th>
-						<th>{% trans "Pontuação" %}(%)</th>
-					</tr>
-				  </thead>
-		
-				  <tbody>
-				
-		
-				{% for sitting in sitting_list %}
-				{% if category == sitting.quiz.category %}
-		
-					<tr>
-					  <td>
-						{% for photo in users %}
-							{% if photo.user == sitting.user %}
-						   		<img loading="lazy" src="{{ photo.avatar.url }}" class="img-fluid" alt="post-thumb"/>
-						    {% else %}
-							{% endif %}
-						{% endfor %}
-					  </td>
-					  <td>{{ sitting.user }}</td>
-					  <td>{{ sitting.quiz }}</td>
-					  <td>{{ sitting.get_percent_correct }}</td>
-					
-					</tr>
 
-					{% else %}
-					
-					{% endif %}
-		
-				{% endfor %}
-		
-				  </tbody>
-		
-				</table>
+				<table class="table align-middle mb-0 table-dark table-sm table-striped text-center align-items-center"  width="100%">
+
+			  <thead class="bg-light">
+				<tr>
+					<th>{% trans "Avatar" %}</th>
+                     <th>{% trans "Usuário" %}</th>
+                     <th>{% trans "Quiz" %}</th>
+                     <th>{% trans "Pontuação" %}(%)</th>
+				</tr>
+			  </thead>
+
+			  <tbody>
+
+
+			{% for sitting in sitting_list %}
+
+				<tr class='h7'>
+				  <td>
+					{% for photo in users %}
+						{% if photo.user == sitting.user %}
+					   		<img loading="lazy" src="{{ photo.avatar.url }}" class="img-fluid" alt="post-thumb" style="width: 45px; height: 45px"/>
+					    {% else %}
+						{% endif %}
+					{% endfor %}
+				  </td>
+				  <td>{{ sitting.user }}</td>
+				  <td>{{ sitting.quiz.category }}</td>
+				  <td >{{ sitting.get_percent_correct }}</td>
+
+				</tr>
+
+			{% endfor %}
+
+			  </tbody>
+
+			</table>
 			{% else %}
 				<p>{% trans "Não há questionários correspondentes" %}.</p>
 			{% endif %}
 		  <!--  block ads_2 -->
 		  {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
 		</aside>
-  
+
 		<div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
 		  <h4 id="collapse">{% trans "Lista de quiz" %} {{category}}</h4>
 
@@ -78,8 +73,8 @@
 			{% endfor %}
 			</ul>
 		</div>
-  
-  
+
+
 		  <!--  Quiz Table -->
 		  {% if quiz_list %}
 		<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -117,11 +112,11 @@
 	{% else %}
         <p>{% trans "Não há questionários disponíveis." %}.</p>
     {% endif %}
-  
+
 		</div>
 	  </div>
 	</div>
-</section> 
+</section>
 
 
 {% endblock %}

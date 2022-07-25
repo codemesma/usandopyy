@@ -3,23 +3,23 @@ try:
     from django.conf.urls import url
 except ImportError:
     from django.urls import re_path as url
-    
+
 from django.urls import path
 
 from .views import QuizListView, CategoriesListView, \
     ViewQuizListByCategory, QuizUserProgressView, QuizMarkingList, \
     QuizMarkingDetail, QuizDetailView, QuizTake
 
+
+
 urlpatterns = [
 
-    url(r'^$',
-        view=QuizListView.as_view(),
-        name='quiz_index'),
+    path('',QuizListView.as_view(),name='quiz_index'),
 
     url(r'^category/$',
         view=CategoriesListView.as_view(),
         name='quiz_category_list_all'),
-    
+
     path('category/<str:slug>/', ViewQuizListByCategory.as_view(), name='quiz_category_list_matching'),
 
     url(r'^progress/$',

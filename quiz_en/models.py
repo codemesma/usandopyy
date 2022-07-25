@@ -42,7 +42,7 @@ class Category(models.Model):
     slug = models.CharField(max_length=200, unique=True)
 
     objects = CategoryManager()
-    
+
     def get_absolute_url(self):
         kwargs = {
 
@@ -91,7 +91,7 @@ class Quiz(models.Model):
 
     description = RichTextUploadingField(blank=True, null=True, config_name='special', external_plugin_resources=[
         ('youtube', '/static/ckeditor/ckeditor_plugins/youtube/', 'plugin.js',)],)
-    
+
 
     url = models.SlugField(
         max_length=60, blank=False,
