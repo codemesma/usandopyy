@@ -29,10 +29,22 @@
                   {% if object.book_available is True %}
                   <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>
                   {% else %}
-                  <h4 class="text-danger">Out of Stock !</h4>
+                  <script type="text/javascript">
+                    function importHotmart(){ 
+                       var imported = document.createElement('script'); 
+                       imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+                       document.head.appendChild(imported); 
+                      var link = document.createElement('link'); 
+                      link.rel = 'stylesheet'; 
+                      link.type = 'text/css'; 
+                      link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+                      document.head.appendChild(link);	} 
+                     importHotmart(); 
+                   </script> 
+                   <a onclick="return false;" href="https://pay.hotmart.com/G73154679X?checkoutMode=2" class="hotmart-fb hotmart__button-checkout"><img src='https://static.hotmart.com/img/btn-buy-green.png'></a> 
                   {% endif %}
                   <hr>
-                            <p class="card-text">{{ object.description }}</p>
+                  <p class="card-text">{{ object.description }}</p>
                 </div>
               </div>
             </div>
