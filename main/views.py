@@ -149,6 +149,7 @@ class TutorialView(HitCountDetailView, DetailView):
         return context
 
 
+
 class DownloadCode(HitCountDetailView, DetailView):
     model = Download
     context_object_name = 'tutorial'

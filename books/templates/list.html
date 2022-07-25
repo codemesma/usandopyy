@@ -5,26 +5,6 @@
 <section class="section mt-0 bg-light pt-4">
     <div class="container">
       <div class="row ">
-        <div class="col-lg-12 order-1 order-lg-1 mb-5 mb-lg-0">
-            <a type="button" class="btn btn-light mb-4" href="{% url 'quiz_index' %}">Blogue de programação</a>
-            <a type="button" class="btn btn-light mb-4" href="https://www.usandopy.com/">Notícias de tecnologia</a>
-            <a type="button" class="btn btn-light mb-4" href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
-            <a type="button" class="btn btn-light mb-4" href="{% url 'list' %}">Livros | E-books | Guias</a>
-            
-            <div class="input-group">
-                <div class="form-outline">
-                    <form class="form" action="{% url 'search_results' %}" method="get">
-                  <input type="search" name="q"  class="form-control bg-white" />
-                  <label class="form-label" for="form1">Procurar </label>
-                </div>
-                <button type="button" action="{% url 'search_results' %}" method="get" class="btn btn-primary">
-                  <i class="fas fa-search"></i>
-                </button>
-            </form>
-              </div>
-           
-  
-        </div>
         <aside class="col-lg-4 order-2 order-lg-1 ">
           <!-- Search -->
           <div class="widget my-3 px-3">

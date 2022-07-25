@@ -10,7 +10,10 @@ from .forms import QuestionForm, EssayForm
 from .models import Quiz, Category, Progress, Sitting, Question
 from essay_en.models import Essay_Question
 from django_blog_it.django_blog_it.models import Post, Canal, Equipa
-from main_en.models import Sobre
+
+
+from main_en.models import Tutorial, Categoria, Tipo, Sobre 
+
 
 from users_en.models import Profile
 
@@ -51,6 +54,9 @@ class QuizListView_en(ListView):
         context['users'] = Profile.objects.all()
         context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-id')
         context['categoria'] = Category.objects.all().order_by('category')
+        
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
 
 
 
@@ -78,6 +84,9 @@ class QuizDetailView(DetailView):
         context['sobre'] = Sobre.objects.all()
 
         context['categoria'] = Category.objects.all().order_by('category')
+        
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
 
 
         return context
@@ -115,6 +124,10 @@ class ViewQuizListByCategory(ListView):
         context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-current_score')
 
         context['categoria'] = Category.objects.all().order_by('category')
+        
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        
         return context
 
     def get_queryset(self):
@@ -135,6 +148,11 @@ class QuizUserProgressView(TemplateView):
         progress, c = Progress.objects.get_or_create(user=self.request.user)
         context['cat_scores'] = progress.list_all_cat_scores
         context['exams'] = progress.show_exams()
+        
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        
+        
         return context
 
 
@@ -161,6 +179,9 @@ class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
         context['users'] = Profile.objects.all()
 
         context['categoria'] = Category.objects.all().order_by('category')
+        
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
 
 
         return context
@@ -186,6 +207,12 @@ class QuizMarkingDetail(QuizMarkerMixin, DetailView):
         context = super(QuizMarkingDetail, self).get_context_data(**kwargs)
         context['questions'] =\
             context['sitting'].get_questions(with_answers=True)
+            
+            
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        
+        
         return context
 
 
@@ -258,6 +285,11 @@ class QuizTake(FormView):
             context['previous'] = self.previous
         if hasattr(self, 'progress'):
             context['progress'] = self.progress
+            
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        
+        
         return context
 
     def form_valid_user(self, form):

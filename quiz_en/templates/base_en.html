@@ -150,6 +150,21 @@
 
     <!-- Navbar -->
 
+    <div class="container my-3">
+      <div class="row">
+        <div class="col-lg-12 order-1 order-lg-1 mb-5 mb-lg-0">
+          <a type="button" class="btn btn-light btn-sn mb-4" href="{% url 'home-page_en' %}">Home</a> 
+          <a type="button" class="btn btn-light btn-sn mb-4" href="{% url 'index_en' %}">Programming Blog</a>
+          <a type="button" class="btn btn-light btn-sn mb-4" href="{% url 'newspaper_en:noticias_en' %}">Tech News</a>
+          <a type="button" class="btn btn-light btn-sn mb-4" href="{% url 'quiz_index_en' %}">Test my knowledge | Quiz</a>
+          <a type="button" class="btn btn-light btn-sn mb-4" href="{% url 'list' %}">Books | E-books | Guias</a>
+          <a type="button" class="btn btn-primary btn-sn mb-4" href="{% url 'home-page' %}">Trocar para Portugues</a>   
+        </div>
+  
+    
+      </div>
+    </div>
+
     <!-- Home -->
     {% block home %}
     <!--  block content -->
