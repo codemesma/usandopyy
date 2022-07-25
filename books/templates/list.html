@@ -9,11 +9,10 @@
       <div class="row ">
         <div class="col-lg-12 order-1 order-lg-1 mb-5 mb-lg-0">
             <a type="button" class="btn btn-info mb-4" href="{% url 'quiz_index' %}">Blogue de programação</a>
-              <a type="button" class="btn btn-info mb-4" href="https://www.usandopy.com/">Notícias de tecnologia</a>
-              <a type="button" class="btn btn-info mb-4" href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
+            <a type="button" class="btn btn-info mb-4" href="https://www.usandopy.com/">Notícias de tecnologia</a>
+            <a type="button" class="btn btn-info mb-4" href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
+            <a type="button" class="btn btn-info mb-4" href="{% url 'list' %}">Livros | E-books | Guias</a>
             <div class="mb-3 mx-0 rounded">
-                
-            
                 <!-- search css -->
                 <form class="form" action="{% url 'search_results' %}" method="get">
                   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -67,7 +66,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
 {% endblock content %}
 

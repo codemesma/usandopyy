@@ -13,51 +13,39 @@
         <a type="button" class="btn btn-info mb-4" href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
         <a type="button" class="btn btn-info mb-4" href="{% url 'list' %}">Livros | E-books | Guias</a>
       </div>
-      <aside class="col-lg-4 order-2 order-lg-1 ">
-        <!-- Search -->
+      <aside class="col-lg-11 order-1 order-lg-1 ">
         <div class="widget my-3 px-3">
 
-        <!--  block news -->
-        {% block news %} {% include 'theme/news.html' %} {% endblock %}
-
+          <div class="card mb-3" style="max-width: 840px;">
+            <div class="row no-gutters">
+              <div class="col-md-7">
+                <img src="{{ object.image_url.url }}" class="card-img">
+              </div>
+              <div class="col-md-5">
+                <div class="card-body">
+                  <h4 class="card-title">{{ object.title }}</h4>
+                  <p class="card-text">Author: {{ object.author }}</p>
+                  <p class="card-text">Price: $ {{ object.price|floatformat:2 }}</p><hr>
+                  {% if object.book_available is True %}
+        <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>
+        {% else %}
+        <h4 class="text-danger">Out of Stock !</h4>
+        {% endif %}
+        <hr>
+                  <p class="card-text">{{ object.description }}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+      
         <div class="card my-1">
             <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
         </div>
       </aside>
-
-      <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
-      <!--  block categoria -->
-        
-      </div>
     </div>
   </div>
 </section>
-
-<div class="card mb-3" style="max-width: 840px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="{{ object.image_url.url }}" class="card-img">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h4 class="card-title">{{ object.title }}</h4>
-          <p class="card-text">Author: {{ object.author }}</p><hr>
-          <p class="card-text">{{ object.description }}</p>
-        </div>
-      </div>
-    </div>
-</div>
-
-<!-- <p>Follow Author: </p> -->
-<p><a href="{{ object.follow_author }}">Follow Author</a> </p>
-<p>Price: $ {{ object.price|floatformat:2 }}</p>
-
-
-{% if object.book_available is True %}
-<a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>
-{% else %}
-<h4 class="text-danger">Out of Stock !</h4>
-{% endif %}
 
 {% endblock content %}
 
