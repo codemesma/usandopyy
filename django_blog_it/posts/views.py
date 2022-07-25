@@ -22,6 +22,9 @@ from main.models import Categoria, Sobre
 from mainsite.models import HomePageSettings
 from news.models import News
 
+from main.models import Tutorial, Categoria, Tipo, Sobre
+
+
 
 
 def categories_tags_lists():
@@ -57,6 +60,9 @@ class Home(ListView):
         context['hot_news'] = results[0]
         context['trending'] = results[6]
         context['editor_choice'] = results[7]
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         categories_list = Category.objects.filter(
             is_active=True, post__status='Published').distinct()
@@ -110,6 +116,9 @@ class BlogPostView(DetailView):
             is_active=True, post__status='Published').distinct()
         context['categoria'] = Categoria.objects.all()
         context['sobre'] = Sobre.objects.all()
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         posts = Post.objects.filter(
             status='Published').order_by('-updated_on')[0:3]
@@ -160,6 +169,10 @@ class SelectedCategoryView(ListView):
         context['hot_news'] = results[0]
         context['trending'] = results[6]
         context['editor_choice'] = results[7]
+        
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         user = self.category.user
         author = Author.objects.all()
@@ -233,6 +246,9 @@ class blog_SearchView(ListView):
             is_active=True, post__status='Published').distinct()
         context['categoria'] = Categoria.objects.all()
         context['sobre'] = Sobre.objects.all()
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         posts = Post.objects.filter(
             status='Published').order_by('-updated_on')[0:3]

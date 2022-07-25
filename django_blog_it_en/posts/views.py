@@ -16,10 +16,11 @@ from django.views.generic import ListView, DetailView
 from django.urls import reverse
 from django_blog_it_en.django_blog_it_en.models import Post_Slugs
 from django.db.models import Q
-from main_en.models import Categoria, Sobre
 
 from mainsite_en.models import HomePageSettings
 from news_en.models import News
+from main_en.models import Tutorial, Categoria, Tipo, Sobre
+
 
 
 def categories_tags_lists():
@@ -67,6 +68,9 @@ class Home(ListView):
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         posts = Post.objects.filter(
             status='Published').order_by('-updated_on')[0:3]
@@ -126,6 +130,9 @@ class BlogPostView(DetailView):
             is_active=True, post__status='Published').distinct()
         context['categoria'] = Categoria.objects.all()
         context['sobre'] = Sobre.objects.all()
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         posts = Post.objects.filter(
             status='Published').order_by('-updated_on')[0:3]
@@ -181,6 +188,9 @@ class SelectedCategoryView(ListView):
         context['hot_news'] = results[0]
         context['trending'] = results[6]
         context['editor_choice'] = results[7]
+        
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         user = self.category.user
         author = Author.objects.all()
