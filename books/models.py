@@ -13,6 +13,7 @@ class Book(models.Model):
     title  = models.CharField(max_length = 200)
     author = models.CharField(max_length = 200)
     book_available = models.BooleanField(default=False)
+    buy = RichTextUploadingField(blank=True, null=True, config_name='special', external_plugin_resources=[('youtube', '/static/ckeditor/ckeditor_plugins/youtube/', 'plugin.js',)],)
     description = RichTextUploadingField(blank=True, null=True, config_name='special', external_plugin_resources=[('youtube', '/static/ckeditor/ckeditor_plugins/youtube/', 'plugin.js',)],)
     price = models.FloatField(null=True, blank=True)
     image_url = models.ImageField(upload_to='static/livros/uploads/%Y/%m/%d/', blank=True, null=True)
