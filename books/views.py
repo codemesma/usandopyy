@@ -77,10 +77,10 @@ class BooksDetailView(DetailView):
         context['editor_choice'] = results[7]
 
         context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
-        
         return context
 
 
@@ -111,6 +111,7 @@ class SearchResultsListView(ListView):
         context['editor_choice'] = results[7]
 
         context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()

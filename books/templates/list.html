@@ -12,20 +12,19 @@
             <a type="button" class="btn btn-light mb-4" href="https://www.usandopy.com/">Notícias de tecnologia</a>
             <a type="button" class="btn btn-light mb-4" href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
             <a type="button" class="btn btn-light mb-4" href="{% url 'list' %}">Livros | E-books | Guias</a>
-            <div class="mb-3 mx-0 rounded">
-                <!-- search css -->
-                <form class="form" action="{% url 'search_results' %}" method="get">
-                  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+            
+            <div class="input-group">
+                <div class="form-outline">
+                    <form class="form" action="{% url 'search_results' %}" method="get">
+                  <input type="search" name="q"  class="form-control bg-white" />
+                  <label class="form-label" for="form1">Procurar </label>
+                </div>
+                <button type="button" action="{% url 'search_results' %}" method="get" class="btn btn-primary">
                   <i class="fas fa-search"></i>
-                  <input
-                    name="q"
-                    class="fas fa-search"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="click to search"
-                  />
-                </form>
-            </div>
+                </button>
+            </form>
+              </div>
+           
   
         </div>
         <aside class="col-lg-4 order-2 order-lg-1 ">
@@ -44,18 +43,18 @@
           <!--  block categoria -->
           <div class="row">
             {% for each in object_list %}
-            <div class="col">
-                <div class="card" style="width: 20rem;">
-                    <img src="{{ each.image_url.url }}" class="card-img-top" alt="...">
+            <div class="col-lg-6 mt-3">
+                <a href="{% url 'detail' each.id %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
+
+                <div class="card" >                    
                     <div class="card-body">
                         <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
                         <p class="card-text">${{ each.price|floatformat:2 }}</p>                
-                        {% if each.book_available is True %}
-                        <li class="text-primary">Available</li>
-                        {% else %}
-                        <li class="text-danger">Out of Stock !</li>
-                        {% endif %}<br>
-                        <a href="{% url 'detail' each.id %}" class="btn btn-primary">View</a>
+                        {% if object.book_available is True %}
+                  <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
+                  {% else %}
+                  {{ object.buy | safe }}
+                  {% endif %}
                     </div>
                 </div>
             </div>
