@@ -46,7 +46,7 @@
                 <h4 class = "text-secondary">Resultados pesquisados</h4><hr>
             </div>
             {% for each in object_list %}
-            <div class="col-lg-6 mt-3">
+            <div class="col-lg-6 mt-1">
                 <a href="{% url 'detail' each.id %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
 
                 <div class="card" >                    

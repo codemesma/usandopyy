@@ -56,7 +56,7 @@ class BooksListView(ListView):
         return context
 
 
-class BooksCategoryView(ListView):
+class BooksCategoryView(DetailView):
     model = Book_Category
     context_object_name = 'cat'
     template_name = 'book_cat.html'
@@ -88,6 +88,8 @@ class BooksCategoryView(ListView):
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
+        
+        context['book_categoria'] = Book_Category.objects.all()
         
         return context
 
@@ -159,8 +161,8 @@ class SearchResultsListView(ListView):
 
 class DownloadBook(HitCountDetailView, DetailView):
     model = Download
-    context_object_name = 'tutorial'
-    template_name = 'display/download.html'
+    context_object_name = 'book'
+    template_name = 'download.html'
     query_pk_and_slug = True
     count_hit = True
     

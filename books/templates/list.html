@@ -1,7 +1,5 @@
 
 {% extends 'base.html' %} {% load static %}
-
-
 {% block content %}
 
 <section class="section mt-0 bg-light pt-4">
@@ -56,9 +54,13 @@
   
           <!--  block categoria -->
           <div class="row">
+            <div class="col-lg-12 my-0">
+                <!--  block ads_2 -->
+                {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+            </div>
             {% for each in object_list %}
-            <div class="col-lg-6 mt-3">
-                <a href="{% url 'detail' each.id %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
+            <div class="col-lg-6 mt-1">
+                <a href="{% url 'detail' slug=each.slug %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
 
                 <div class="card" >                    
                     <div class="card-body">
