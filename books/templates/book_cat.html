@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Procurar Livro {% endblock title %}
+{% block title %}Categoria Livro {% endblock title %}
 
 {% block content %}
 
@@ -43,9 +43,10 @@
           <!--  block categoria -->
           <div class="row">
             <div class="col-lg-12 mt-3">
-                <h4 class = "text-secondary">Resultados pesquisados</h4><hr>
+                <h4 class = "text-info">{{cat.name}}</h4><hr>
             </div>
-            {% for each in object_list %}
+            {% for each in book %}
+            {% if object.id == each.id %}
             <div class="col-lg-6 mt-3">
                 <a href="{% url 'detail' each.id %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
 
@@ -54,15 +55,17 @@
                         <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
                         <p class="card-text">${{ each.price|floatformat:2 }}</p>                
                         {% if object.book_available is True %}
-                  <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
-                  {% else %}
-                  {{ object.buy | safe }}
-                  {% endif %}
+                        <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
+                        {% else %}
+                        {{ object.buy | safe }}
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            {% empty %}
-            <h5 class="text-danger">Nada encontrado :(</h5>
+            {% else %}
+
+            {% endif %}
+
             {% endfor %}
         </div>
         </div>

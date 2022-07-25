@@ -51,11 +51,14 @@ class BooksListView(ListView):
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
         
+        context['book_categoria'] = Book_Category.objects.all()
+        
         return context
 
 
 class BooksCategoryView(ListView):
     model = Book_Category
+    context_object_name = 'cat'
     template_name = 'book_cat.html'
     query_pk_and_slug = True
     

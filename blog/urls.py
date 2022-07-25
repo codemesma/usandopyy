@@ -54,7 +54,7 @@ urlpatterns = [
     path('blog_en/', include('django_blog_it_en.urls')),
     url(r'^quiz/', include('quiz.urls')),
     path('quiz_en/', include('quiz_en.urls')),
-    path('books', include('books.urls')),
+    path('livros/', include('books.urls')),
     path('sitemaps.xml/', sitemap, {'sitemaps': sitemaps}),
 
     path('user/', include('users.urls')),

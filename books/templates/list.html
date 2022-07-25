@@ -40,6 +40,20 @@
         </aside>
   
         <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+        <!-- categories -->
+        <div class="widget mt-3 px-3">
+            <h5 class="widget-title pt-3"><span>Categorias</span></h5>
+            <ul class="list-inline widget-list-inline">
+            {% for category in book_categoria %}
+            <li class="list-inline-item">
+                <a href="{% url 'book_cat' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+                >{{ category}}</a
+                >
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+  
           <!--  block categoria -->
           <div class="row">
             {% for each in object_list %}
