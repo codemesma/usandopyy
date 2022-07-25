@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
     'main',
     'books',
+    'books_en',
     'main_en',
     'main_es',
     'mainsite',

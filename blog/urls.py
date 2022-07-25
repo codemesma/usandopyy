@@ -55,6 +55,7 @@ urlpatterns = [
     url(r'^quiz/', include('quiz.urls')),
     path('quiz_en/', include('quiz_en.urls')),
     path('livros/', include('books.urls')),
+    path('books/', include('books_en.urls')),
     path('sitemaps.xml/', sitemap, {'sitemaps': sitemaps}),
 
     path('user/', include('users.urls')),

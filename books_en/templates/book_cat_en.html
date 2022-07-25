@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Categoria - {{cat.name}} {% endblock title %}
+
+{% block content %}
+
+<section class="section mt-0 bg-light pt-4">
+    <div class="container">
+      <div class="row ">
+        <aside class="col-lg-4 order-2 order-lg-1 ">
+          <!-- Search -->
+          <div class="widget my-3 px-3">
+  
+          <!--  block news -->
+          {% block news %} {% include 'theme/news.html' %} {% endblock %}
+  
+          <div class="card my-1">
+              <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+          </div>
+        </aside>
+  
+        <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+            <!-- categories -->
+        <div class="widget mt-3 px-3">
+            <h5 class="widget-title pt-3"><span>Categorias</span></h5>
+            <ul class="list-inline widget-list-inline">
+            {% for category in book_categoria %}
+            <li class="list-inline-item">
+                <a href="{% url 'book_cat' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+                >{{ category}}</a
+                >
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+          <!--  block categoria -->
+          <div class="row">
+            <div class="col-lg-12 my-0">
+                <!--  block ads_2 -->
+                {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+            </div>
+            {% for b in book %}
+            {% if object.id == b.category.id %}
+            <div class="col-lg-6 mt-1">
+                <a href="{% url 'detail' slug=b.slug %}"><img src="{{ b.image_url.url }}" class="card-img-top" alt="..."></a>
+
+                <div class="card" >                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ b.title|slice:":25"}} ...</h5>
+                        <p class="card-text">${{ b.price|floatformat:2 }}</p>                
+                        {% if object.book_available is True %}
+                        <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
+                        {% else %}
+                        {{ object.buy | safe }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% else %}
+
+            {% endif %}
+
+            {% endfor %}
+        </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}

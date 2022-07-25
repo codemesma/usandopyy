@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Procurar Livro {% endblock title %}
+
+{% block content %}
+
+<section class="section mt-0 bg-light pt-4">
+    <div class="container">
+      <div class="row ">
+        
+        <aside class="col-lg-4 order-2 order-lg-1 ">
+          <!-- Search -->
+          <div class="widget my-3 px-3">
+  
+          <!--  block news -->
+          {% block news %} {% include 'theme/news.html' %} {% endblock %}
+  
+          <div class="card my-1">
+              <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+          </div>
+        </aside>
+  
+        <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+          <!--  block categoria -->
+          <div class="row">
+            <div class="col-lg-12 mt-3">
+                <h4 class = "text-secondary">Resultados pesquisados</h4><hr>
+            </div>
+            {% for each in object_list %}
+            <div class="col-lg-6 mt-1">
+                <a href="{% url 'detail' each.id %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
+
+                <div class="card" >                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
+                        <p class="card-text">${{ each.price|floatformat:2 }}</p>                
+                        {% if object.book_available is True %}
+                  <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>
+                  {% else %}
+                  {{ object.buy | safe }}
+                  {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h5 class="text-danger">Nada encontrado :(</h5>
+            {% endfor %}
+        </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}
