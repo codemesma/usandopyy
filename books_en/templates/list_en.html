@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %} {% load static %}
+{% extends 'base_en.html' %} {% load static %}
 {% block content %}
 
 <section class="section mt-0 bg-light pt-4">
@@ -10,7 +10,7 @@
           <div class="widget my-3 px-3">
   
           <!--  block news -->
-          {% block news %} {% include 'theme/news.html' %} {% endblock %}
+          {% block news %} {% include 'theme_en/news.html' %} {% endblock %}
   
           <div class="card my-1">
               <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
@@ -20,11 +20,11 @@
         <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
         <!-- categories -->
         <div class="widget mt-3 px-3">
-            <h5 class="widget-title pt-3"><span>Categorias</span></h5>
+            <h5 class="widget-title pt-3"><span>Categories</span></h5>
             <ul class="list-inline widget-list-inline">
             {% for category in book_categoria %}
             <li class="list-inline-item">
-                <a href="{% url 'book_cat' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+                <a href="{% url 'book_cat_en' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
                 >{{ category}}</a
                 >
             </li>
@@ -40,12 +40,12 @@
             </div>
             {% for each in object_list %}
             <div class="col-lg-6 mt-1">
-                <a href="{% url 'detail' slug=each.slug %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
+                <a href="{% url 'detail_en' slug=each.slug %}"><img src="{{ each.image_url.url }}" class="card-img-top" alt="..."></a>
 
                 <div class="card" >                    
                     <div class="card-body">
                         <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
-                        <small>Categoria : <a href="{% url 'book_cat' each.category.slug  %}" class="ml-1">{{each.category}}</a></small>
+                        <small>Categoria : <a href="{% url 'book_cat_en' each.category.slug  %}" class="ml-1">{{each.category}}</a></small>
                         <p class="card-text">${{ each.price|floatformat:2 }}</p>                
                         {% if object.book_available is True %}
                         <a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Download</a>

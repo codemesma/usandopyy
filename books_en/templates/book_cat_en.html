@@ -1,7 +1,7 @@
 
-{% extends 'base.html' %}
+{% extends 'base_en.html' %}
 
-{% block title %}Categoria - {{cat.name}} {% endblock title %}
+{% block title %}Category - {{cat.name}} {% endblock title %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
           <div class="widget my-3 px-3">
   
           <!--  block news -->
-          {% block news %} {% include 'theme/news.html' %} {% endblock %}
+          {% block news %} {% include 'theme_en/news.html' %} {% endblock %}
   
           <div class="card my-1">
               <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
@@ -23,11 +23,11 @@
         <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
             <!-- categories -->
         <div class="widget mt-3 px-3">
-            <h5 class="widget-title pt-3"><span>Categorias</span></h5>
+            <h5 class="widget-title pt-3"><span>Categories</span></h5>
             <ul class="list-inline widget-list-inline">
             {% for category in book_categoria %}
             <li class="list-inline-item">
-                <a href="{% url 'book_cat' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+                <a href="{% url 'book_cat_en' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
                 >{{ category}}</a
                 >
             </li>
@@ -43,7 +43,7 @@
             {% for b in book %}
             {% if object.id == b.category.id %}
             <div class="col-lg-6 mt-1">
-                <a href="{% url 'detail' slug=b.slug %}"><img src="{{ b.image_url.url }}" class="card-img-top" alt="..."></a>
+                <a href="{% url 'detail_en' slug=b.slug %}"><img src="{{ b.image_url.url }}" class="card-img-top" alt="..."></a>
 
                 <div class="card" >                    
                     <div class="card-body">
