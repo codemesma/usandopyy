@@ -27,7 +27,7 @@
                   <p class="card-text">Author: {{ object.author }}</p>
                   <p class="card-text">Price: $ {{ object.price|floatformat:2 }}</p><hr>
                   {% if object.book_available is True %}
-                  <a href="{{object.web}}" class="btn btn-outline-success" role="button">Download</a>
+                  <a href="{{object.web}}" class="btn btn-outline-success" target="_blank" role="button">Download</a>
                   {% else %}
                   {{ object.buy | safe }}
                   {% endif %}
