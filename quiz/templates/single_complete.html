@@ -9,10 +9,27 @@
 {% block content %}
 
 
-{% if user.is_authenticated %}
-  <p>{% trans "Você já fez este exame e apenas uma sessão é permitida" %}.</p>
-{% else %}
-  <p>{% trans "Este exame só pode ser acessado por usuários conectados" %}.</p>
-{% endif %}
+<section class="section mt-0">
+	<div class="container">
+	  <div class="row">
+		<aside class="col-lg-4 order-2 order-lg-1 border-right">
+		  <!--  block ads_2 -->
+		  {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+		</aside>
+
+		<div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+			{% if user.is_authenticated %}
+			<p>{% trans "Você já fez este exame e apenas uma sessão é permitida" %}.</p>
+			{% else %}
+			<p>{% trans "Este exame só pode ser acessado por usuários conectados" %}.</p>
+			<a type="button" href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
+			{% endif %}
+			<!--  block ads_2 -->
+			 {% include 'theme/ads_2.html' %}
+
+		</div>
+	  </div>
+	</div>
+  </section>
 
 {% endblock %}

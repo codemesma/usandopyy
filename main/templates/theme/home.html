@@ -1,70 +1,32 @@
 {% load static %}
-<section class="section mt-0">
+<section class="section mt-0 bg-light pt-4">
   <div class="container">
-    <div class="row">
-      <aside class="col-lg-4 order-2 order-lg-1 border-right">
-		<a type="button" class="btn btn-outline-info" href="{% url 'quiz_progress' %}">
-			Ver estatísticas dos meus resultados do Quiz
-		</a>
-        <!-- Search -->
-        <div class="widget py-0 mt-5">
-          <h5 class="widget-title"><span>Pesquisar</span></h5>
-		  <div class="">
+    <div class="row ">
+      <div class="col-lg-12 order-1 order-lg-1 mb-5 mb-lg-0">
+          <a type="button" class="btn btn-info mb-4" href="{% url 'quiz_index' %}">Blogue de programação</a>
+            <a type="button" class="btn btn-info mb-4" href="https://www.usandopy.com/">Notícias de tecnologia</a>
+            <a type="button" class="btn btn-info mb-4" href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
+		  <div class="mb-3 mx-0 rounded">
 			<script async src="https://cse.google.com/cse.js?cx=e542ecd9cf3c36e91"></script>
-				  <div class="gcse-search"></div>
-		  <div class=" mt-4 mb-5">
-			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
-				   crossorigin="anonymous"></script>
-			  <!-- lateral -->
-			  <ins class="adsbygoogle"
-				   style="display:block"
-				   data-ad-client="ca-pub-1810411345881098"
-				   data-ad-slot="6899621083"
-				   data-ad-format="auto"
-				   data-full-width-responsive="true"></ins>
-			  <script>
-				   (adsbygoogle = window.adsbygoogle || []).push({});
-			  </script>
-		  </div>
-        </div>
+			<div class="gcse-search"></div>
+          </div>
+
+      </div>
+      <aside class="col-lg-4 order-2 order-lg-1 ">
+        <!-- Search -->
+        <div class="widget my-3 px-3">
 
         <!--  block news -->
         {% block news %} {% include 'theme/news.html' %} {% endblock %}
 
-        <div class=" mb-5">
-			  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
-				   crossorigin="anonymous"></script>
-			  <!-- lateral -->
-			  <ins class="adsbygoogle"
-				   style="display:block"
-				   data-ad-client="ca-pub-1810411345881098"
-				   data-ad-slot="6899621083"
-				   data-ad-format="auto"
-				   data-full-width-responsive="true"></ins>
-			  <script>
-				   (adsbygoogle = window.adsbygoogle || []).push({});
-			  </script>
-		 </div>
-
-		 <!--  block blog -->
-        {% block blog %} {% include 'theme/blog.html' %} {% endblock %}
-
-        <!--  block ads_1 -->
-        {% block ads_1 %} {% include 'theme/ads_1.html' %} {% endblock %}
-
-        <!--  block ads_2 -->
-        {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
+        <div class="card my-1">
+            <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+        </div>
       </aside>
 
       <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
-        <h4 id="collapse">Tutorias</h4>
-
 		<!--  block categoria -->
         {% block categoria %} {% include 'theme/categoria.html' %} {% endblock %}
-
-		<br>
-        <!--  block Tutorial -->
-        {% block tutorial %} {% include 'theme/tutorial.html' %} {% endblock %}
 
       </div>
     </div>

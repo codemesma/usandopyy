@@ -3,7 +3,7 @@
 <header class="sticky-top bg-white z-depth-1 py-0">
     <div class="container-fluid py-0">
 
-       <nav class="navbar navbar-expand-lg navbar-white mx-0 px-0 z-depth-1 py-0 mb-5">
+       <nav class="navbar navbar-expand-lg navbar-white mx-0 px-0 z-depth-1 py-0 mb-2">
           <a class="navbar-brand" href="{% url 'home-page' %}">
              <img class="img-fluid" src="{% static 'logo1.jpg' %}" alt="LogBook">
           </a>
@@ -12,38 +12,35 @@
           </button>
 
           <div class="collapse navbar-collapse text-center" id="navigation">
-             <ul class="navbar-nav ml-auto">
-                 <li class="nav-item">
-                   <a class="nav-link"  href="{% url 'home-page' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-               </li>
-                <li class="nav-item dropdown">
+             <ul class="navbar-nav mr-auto">
+
+               {% for t in tipo %}
+               <li class="nav-item dropdown">
                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                       aria-expanded="false">
-                      <i class="fas fa-code"></i> Programação<i class="ti-angle-down ml-1"></i>
+                      {{t.name}}<i class="ti-angle-down ml-1"></i>
                    </a>
                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="https://www.usandopy.com/categoria/python-iniciantes/">Python iniciante</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/categoria/python-intermediario/">Python intermediario</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/categoria/python-avancado/">Python avançado</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/categoria/linguagem-r/">Linguagem R</a>
-                      <a class="dropdown-item" href="https://www.usandopy.com/categoria/programacao-em-c/">Programação em C</a>
+                      {% for c in categoria1 %} {% if t.id == c.tipo.id %}
+                        <a class="dropdown-item" href="{% url 'categoria-view' c.slug  %}">
+                            <img
+        						class="h4"
+        						style="height: 22px; width: 22px;"
+        						class="card-img-top im"
+        						src="{{ c.featured_image.url }}"
+        						alt="Card image cap"
+        					  />
+        					  {{c.name}}
+                        </a>
+                      {% endif %} {% endfor %}
                    </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'quiz_index' %}"><i class="fas fa-question-circle"></i> Quiz</a>
-               </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-blog"></i> Blogue programação</a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="{% url 'newspaper:noticias' %}"><i class="fas fa-newspaper"></i> Notícias de tecnologia</a>
-                </li>
-                <li class="nav-item ">
-                     <a class="nav-link " href="{% url 'home-page_en' %}"><i class="fa fa-language" aria-hidden="true"></i> English</a>
-               </li>
 
-               
-               <div class="navbar-nav ml-auto">
+                {% endfor %}
+
+
+             </ul>
+             <div class="navbar-nav ml-auto">
                   {% if user.is_authenticated %}
                     <a href="{% url 'users-profile' %}" class="nav-item nav-link"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
                     <a href="{% url 'logout' %}" class="nav-item nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
@@ -52,9 +49,6 @@
                   {% endif %}
 
                 </div>
-
-
-             </ul>
           </div>
        </nav>
     </div>

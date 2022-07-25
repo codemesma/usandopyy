@@ -1,6 +1,6 @@
-{% extends "base.html" %} {% load i18n %} {% load quiz_tags %} {% block title %}
-{% trans "Página de progresso" %} {% endblock %} {% block description %} 
-{% trans "Página de progresso do usuário" %} {% endblock %} {% block content %}
+{% extends "base_en.html" %} {% load i18n %} {% load quiz_tags %} {% block title %}
+{% trans "Progress page" %} {% endblock %} {% block description %}
+{% trans "User progress page" %} {% endblock %} {% block content %}
 
 <section class="section mt-0">
   <div class="container">
@@ -12,7 +12,7 @@
       <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
         {% if cat_scores %}
 
-        <h4 class="mb-3">{% trans "Pontuações das Categorias de Pergunta" %}</h4>
+        <h4 class="mb-3">{% trans "Question Categories Scores" %}</h4>
 
         <table
           class="table table-striped table-bordered table-sm"
@@ -21,9 +21,9 @@
         >
           <thead>
             <tr>
-              <th>{% trans "Categoria" %}</th>
-              <th>{% trans "Respondeu corretamente" %}</th>
-              <th>{% trans "Incorreta" %}</th>
+              <th>{% trans "Category" %}</th>
+              <th>{% trans "You answered correctly" %}</th>
+              <th>{% trans "Incorrect" %}</th>
               <th>%</th>
             </tr>
           </thead>
@@ -45,9 +45,9 @@
 
         <hr />
 
-        <h4>{% trans "Provas anteriores" %}</h4>
+        <h4>{% trans "Previous exams" %}</h4>
         <p class="">
-          {% trans "Abaixo estão os resultados dos exames que você fez." %}
+          {%trans "Below are the results of the exams you took." %}
         </p>
 
         <table
@@ -57,9 +57,9 @@
         >
           <thead>
             <tr>
-              <th>{% trans "Titúlo do Quiz" %}</th>
-              <th>{% trans "Pontuação" %}</th>
-              <th>{% trans "Pontuação possível" %}</th>
+              <th>{% trans "Quiz Title" %}</th>
+              <th>{% trans "Score" %}</th>
+              <th>{% trans "Possible score" %}</th>
               <th>%</th>
             </tr>
           </thead>

@@ -17,7 +17,7 @@ from users_en.models import Profile
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
-    @method_decorator(permission_required('quiz.view_sittings'))
+    @method_decorator(permission_required('quiz_en.view_sittings'))
     def dispatch(self, *args, **kwargs):
         return super(QuizMarkerMixin, self).dispatch(*args, **kwargs)
 
@@ -30,19 +30,20 @@ class SittingFilterTitleMixin(object):
             queryset = queryset.filter(quiz__title__icontains=quiz_filter)
 
         return queryset
-    
 
 
-class QuizListView(ListView):
+
+class QuizListView_en(ListView):
     model = Quiz
+    template_name = 'quiz_en/quiz_list.html'
 
     def get_queryset(self):
-        queryset = super(QuizListView, self).get_queryset()
+        queryset = super(QuizListView_en, self).get_queryset()
         return queryset.filter(draft=False)
-    
-    
+
+
     def get_context_data(self, *args, **kwargs):
-        context = super(QuizListView, self).get_context_data(*args, **kwargs)
+        context = super(QuizListView_en, self).get_context_data(*args, **kwargs)
 
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
@@ -50,7 +51,8 @@ class QuizListView(ListView):
         context['users'] = Profile.objects.all()
         context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-id')
         context['categoria'] = Category.objects.all().order_by('category')
-        
+
+
 
         return context
 
@@ -62,28 +64,28 @@ class QuizDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
 
-        if self.object.draft and not request.user.has_perm('quiz.change_quiz'):
+        if self.object.draft and not request.user.has_perm('quiz_en.change_quiz'):
             raise PermissionDenied
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
-    
+
     def get_context_data(self, *args, **kwargs):
         context = super(QuizDetailView, self).get_context_data(*args, **kwargs)
 
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
-        
+
         context['categoria'] = Category.objects.all().order_by('category')
-        
+
 
         return context
 
 
 class CategoriesListView(ListView):
     model = Category
-    
+
 
 
 class ViewQuizListByCategory(ListView):
@@ -100,18 +102,18 @@ class ViewQuizListByCategory(ListView):
     def get_context_data(self, **kwargs):
         context = super(ViewQuizListByCategory, self)\
             .get_context_data(**kwargs)
-            
+
         context['categoria'] = Category.objects.all().order_by('category')
 
         context['category'] = self.category
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
-        
+
         context['users'] = Profile.objects.all()
-        
+
         context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-current_score')
-        
+
         context['categoria'] = Category.objects.all().order_by('category')
         return context
 
@@ -148,18 +150,18 @@ class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
             queryset = queryset.filter(user__username__icontains=user_filter)
 
         return queryset
-    
+
     def get_context_data(self, *args, **kwargs):
         context = super(QuizMarkingList, self).get_context_data(*args, **kwargs)
 
         context['canal'] = Canal.objects.all().order_by('id')
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
-        
+
         context['users'] = Profile.objects.all()
-        
+
         context['categoria'] = Category.objects.all().order_by('category')
-        
+
 
         return context
 

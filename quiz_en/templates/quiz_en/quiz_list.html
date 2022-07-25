@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_en.html' %}
 {% load i18n %}
 {% block title %}{% trans "All Quizzes" %}{% endblock %}
 
@@ -8,88 +8,88 @@
 	<div class="container">
 	  <div class="row">
 		<aside class="col-lg-4 order-2 order-lg-1 border-right">
-		  
-			<h5 class="mb-4">{% trans "Resultados das últimas tentativas" %}</h5>
+
+			<h5 class="mb-4">{% trans "Results of the last attempts" %}</h5>
 			{% if sitting_list %}
-		
-				<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-		
-				  <thead>
-					<tr>
-						<th>{% trans "Avatar" %}</th>
-						<th>{% trans "Usuário" %}</th>
-						<th>{% trans "Teste" %}</th>
-						<th>{% trans "Pontuação" %}(%)</th>
-					</tr>
-				  </thead>
-		
-				  <tbody>
-				
-		
-				{% for sitting in sitting_list %}
-		
-					<tr>
-					  <td>
-						{% for photo in users %}
-							{% if photo.user == sitting.user %}
-						   		<img loading="lazy" src="{{ photo.avatar.url }}" class="img-fluid" alt="post-thumb"/>
-						    {% else %}
-							{% endif %}
-						{% endfor %}
-					  </td>
-					  <td>{{ sitting.user }}</td>
-					  <td>{{ sitting.quiz.category }}</td>
-					  <td>{{ sitting.get_percent_correct }}</td>
-					
-					</tr>
-		
-				{% endfor %}
-		
-				  </tbody>
-		
-				</table>
+
+			<table class="table align-middle mb-0 table-dark table-sm table-striped text-center align-items-center"  width="100%">
+
+			  <thead class="bg-light">
+				<tr>
+					<th>{% trans "Avatar" %}</th>
+                    <th>{% trans "User" %}</th>
+                    <th>{% trans "Quiz" %}</th>
+                    <th>{% trans "Score" %}(%)</th>
+				</tr>
+			  </thead>
+
+			  <tbody>
+
+
+			{% for sitting in sitting_list %}
+
+				<tr class='h7'>
+				  <td>
+					{% for photo in users %}
+						{% if photo.user == sitting.user %}
+					   		<img loading="lazy" src="{{ photo.avatar.url }}" class="img-fluid" alt="post-thumb" style="width: 45px; height: 45px"/>
+					    {% else %}
+						{% endif %}
+					{% endfor %}
+				  </td>
+				  <td>{{ sitting.user }}</td>
+				  <td>{{ sitting.quiz.category }}</td>
+				  <td >{{ sitting.get_percent_correct }}</td>
+
+				</tr>
+
+			{% endfor %}
+
+			  </tbody>
+
+			</table>
 			{% else %}
-				<p>{% trans "Não há questionários correspondentes" %}.</p>
+				<p>{% trans "There are no matching questionnaires" %}.</p>
 			{% endif %}
 		  <!--  block ads_2 -->
 		  {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
 		</aside>
-  
-		<div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
-		  
 
-		  <a type="button" class="btn btn-outline-info" href="{% url 'quiz_progress' %}">
-			Ver estatísticas dos meus resultados
+		<div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+
+
+		  <a type="button" class="btn btn-outline-info" href="{% url 'quiz_progress_en' %}">
+			See statistics of my results
 		  </a>
 
-		  <h4 class="mt-5" id="collapse">{% trans "Lista de quiz" %}</h4>
+		  <h4 class="mt-5" id="collapse">{% trans "Quiz List" %}</h4>
 
 		  <!-- categories -->
 		<div class="widget">
-			<h6 class="widget-title my-4"><span>Categorias</span></h6>
+			<h6 class="widget-title my-4"><span>Categories</span></h6>
 			<ul class="list-inline widget-list-inline">
 			{% for category in categoria %}
 			<li class="list-inline-item">
-				<a href="{% url 'quiz_category_list_matching' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
+				<a href="{% url 'quiz_category_list_matching_en' slug=category.slug %}" style="background-color: #387eb8; color: #ffffff"
 				>{{ category}}</a
 				>
 			</li>
 			{% endfor %}
 			</ul>
 		</div>
-  
-  
+
+
 		  <!--  Quiz Table -->
 		  {% if quiz_list %}
 		<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
 		  <thead>
 			<tr>
-				<th>{% trans "Título" %}</th>
-				<th>{% trans "Categoria" %}</th>
-				<th>{% trans "Exame" %}</th>
-				<th>{% trans "Tentativa única" %}</th>
-				<th></th>
+				<th>{% trans "Title" %}</th>
+                <th>{% trans "Category" %}</th>
+                <th>{% trans "Exam" %}</th>
+                <th>{% trans "Single attempt" %}</th>
+                <th></th>
 			</tr>
 		  </thead>
 
@@ -103,8 +103,8 @@
 			  <td>{{ quiz.exam_paper }}</td>
 			  <td>{{ quiz.single_attempt }}</td>
 			  <td>
-				<a class="btn btn-dark btn-rounded btn-sm"  href="{% url 'quiz_start_page' slug=quiz.url %}">
-				  {% trans "Tentar" %}
+				<a class="btn btn-dark btn-rounded btn-sm"  href="{% url 'quiz_start_page_en' slug=quiz.url %}">
+				  {% trans "Try" %}
 				</a>
 			</tr>
 
@@ -114,11 +114,11 @@
 		</table>
 
 	{% else %}
-        <p>{% trans "Não há questionários disponíveis." %}.</p>
+        <p>{% trans "There are no questionnaires available." %}.</p>
     {% endif %}
-  
+
 		</div>
 	  </div>
 	</div>
-</section>    
+</section>
 {% endblock %}

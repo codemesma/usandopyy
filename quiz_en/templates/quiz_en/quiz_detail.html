@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load i18n %} {% block title %} {{ quiz.title }} 
+{% extends 'base_en.html' %} {% load i18n %} {% block title %} {{ quiz.title }}
 {% endblock %} {% block content %}
 <section class="section mt-0">
   <div class="container">
@@ -11,7 +11,7 @@
         <h4>{{ quiz.title }}</h4>
         <ul class="list-inline post-meta mb-2">
           <li class="list-inline-item">
-            {% trans "Categoria" %} :
+            {% trans "Category" %} :
             <a
               href="#"
               class="ml-1"
@@ -22,11 +22,11 @@
         <hr>
 
         {% if quiz.single_attempt %}
-        <h4>{% trans "Você só terá uma tentativa neste quiz" %}.</h4>
+        <h4>{% trans "You will only have one attempt at this quiz." %}.</h4>
         {% endif %}
         <p class="my-4">{{ quiz.description | safe }}</p>
         <p class="my-5">
-          <a class="btn btn-dark btn-rounded" href="{% url 'quiz_question' quiz_name=quiz.url %}">
+          <a class="btn btn-dark btn-rounded" href="{% url 'quiz_question_en' quiz_name=quiz.url %}">
             {% trans "Start quiz" %}
           </a>
         </p>

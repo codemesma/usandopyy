@@ -1,11 +1,11 @@
-<div class="widget">
-    <h5 class="widget-title"><span>Notícias recentes</span></h5>
+<div class="widget mt-3 rounded">
+    <h5 class="widget-title pt-3"><span>Notícias recentes</span></h5>
     <!-- post-item -->
     <ul class="list-unstyled widget-list">
       <li class="media  align-items-center ">
          <a href="{{ trending.get_absolute_url }}">
-            <img loading="lazy" class="img-fluid mr-2 " 
-                   src="{% if trending.thumbnail_url %}  {{ trending.thumbnail_url }} {% else %}{{ trending.thumbnail.url }}{% endif %}" 
+            <img loading="lazy" class="img-fluid mr-2 "
+                   src="{% if trending.thumbnail_url %}  {{ trending.thumbnail_url }} {% else %}{{ trending.thumbnail.url }}{% endif %}"
                  style="height:65px; object-fit: cover;">
          </a>
          <div class="media-body">
@@ -17,8 +17,8 @@
    <ul class="list-unstyled widget-list">
       <li class="media  align-items-center ">
          <a href="{{ editor_choice.get_absolute_url }}">
-            <img loading="lazy" class="img-fluid mr-2 " 
-                   src="{% if editor_choice.thumbnail_url %}  {{ editor_choice.thumbnail_url }} {% else %}{{ editor_choice.thumbnail.url }}{% endif %}" 
+            <img loading="lazy" class="img-fluid mr-2 "
+                   src="{% if editor_choice.thumbnail_url %}  {{ editor_choice.thumbnail_url }} {% else %}{{ editor_choice.thumbnail.url }}{% endif %}"
                  style="height:65px; object-fit: cover;">
          </a>
          <div class="media-body">
@@ -30,8 +30,8 @@
    <ul class="list-unstyled widget-list">
       <li class="media  align-items-center ">
          <a href="{{ hot_news.get_absolute_url }}">
-            <img loading="lazy" class="img-fluid mr-2 " 
-                   src="{% if hot_news.thumbnail_url %}  {{ hot_news.thumbnail_url }} {% else %}{{ hot_news.thumbnail.url }}{% endif %}" 
+            <img loading="lazy" class="img-fluid mr-2 "
+                   src="{% if hot_news.thumbnail_url %}  {{ hot_news.thumbnail_url }} {% else %}{{ hot_news.thumbnail.url }}{% endif %}"
                  style="height:65px; object-fit: cover;">
          </a>
          <div class="media-body">
@@ -40,4 +40,6 @@
          </div>
       </li>
    </ul>
+   <!--  block ads_2 -->
+   {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
  </div>

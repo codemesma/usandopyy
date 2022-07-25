@@ -15,6 +15,11 @@ from hitcount.views import HitCountDetailView
 from mainsite_en.models import HomePageSettings
 from news_en.models import Category, News
 
+from quiz_en.models import Quiz, Category, Progress, Sitting, Question
+from essay_en.models import Essay_Question
+
+from users_en.models import Profile
+
 
 
 def error_404_view(request, exception):
@@ -56,11 +61,14 @@ class Home(ListView):
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
 
-        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:6]
-        context['post'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:3]
+        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:10]
+        context['post'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:10]
         context['post_banner'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:3]
         context['categoria'] = Categoria.objects.all().order_by('name')
         context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+
+        context['users'] = Profile.objects.all()
+        context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-id')[0:10]
 
 
         context.update({
@@ -85,9 +93,14 @@ class Tutoriais(ListView):
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
 
-        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:20]
+        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:5]
         context['categoria'] = Categoria.objects.all().order_by('name')
         context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
+
+        context['users'] = Profile.objects.all()
+        context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-id')[0:6]
 
 
         context.update({
@@ -113,6 +126,10 @@ class TutorialView(HitCountDetailView, DetailView, ):
         tut = Tutorial.objects.all()
         context['tut'] = tut
         context['categoria'] = Categoria.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
         context.update({
             "og_image": self.object.featured_image,
             "description": self.object.meta_description if self.object.meta_description else "",
@@ -134,6 +151,10 @@ class DownloadCode(HitCountDetailView, DetailView):
     def get_context_data(self, **kwargs):
         context = super(DownloadCode, self).get_context_data(**kwargs)
         context['sobre'] = Sobre.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
         context.update({
             "og_image": self.object.featured_image,
             "description": self.object.meta_description if self.object.meta_description else "",
@@ -164,6 +185,10 @@ class CategoryView(DetailView):
         context = super(CategoryView, self).get_context_data(**kwargs)
         tut = Tutorial.objects.all()
         context['sobre'] = Sobre.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
 
         context['tut'] = tut
         context['categoria'] = Categoria.objects.all()
@@ -191,6 +216,10 @@ class CookiePageView(ListView):
         context['sobre'] = Sobre.objects.all()
 
         context['categoria'] = Categoria.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
 
         context.update({
 
@@ -218,6 +247,10 @@ class TermosPageView(ListView):
         context['sobre'] = Sobre.objects.all()
 
         context['categoria'] = Categoria.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
 
         context.update({
 
@@ -245,6 +278,10 @@ class Cookie(ListView):
         context['sobre'] = Sobre.objects.all()
 
         context['categoria'] = Categoria.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
 
         context.update({
 
@@ -272,6 +309,10 @@ class SearchView(ListView):
 
         context['categoria'] = Categoria.objects.all()
         context['sobre'] = Sobre.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
 
         context.update({
 
@@ -299,6 +340,10 @@ class AboutPageView(ListView):
             status='Published')
 
         context['categoria'] = Categoria.objects.all()
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+        context['tipo'] = Tipo.objects.all().order_by('id')
+
 
         context.update({
 

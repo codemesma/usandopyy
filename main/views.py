@@ -18,6 +18,13 @@ from news.models import Category, News
 from django.http import HttpResponse
 from django.views import View
 
+
+from quiz.models import Quiz, Category, Progress, Sitting, Question
+from essay.models import Essay_Question
+
+from users.models import Profile
+
+
 class AdsView(View):
     """Replace pub-0000000000000000 with your own publisher ID"""
     global line
@@ -61,12 +68,15 @@ class Home(ListView):
         context['equipa'] = Equipa.objects.all().order_by('id')
         context['sobre'] = Sobre.objects.all()
 
-        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:7]
+        context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:10]
         context['tutorial_'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:2]
-        context['post'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:3]
+        context['post'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:10]
         context['post_banner'] = Post.objects.filter(status='Published').order_by('-updated_on')[0:4]
         context['categoria'] = Categoria.objects.all().order_by('name')
         context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
+
+        context['users'] = Profile.objects.all()
+        context['sitting_list'] = Sitting.objects.all().filter(complete=True).order_by('-id')[0:10]
 
 
         context.update({
@@ -94,9 +104,9 @@ class Tutoriais(ListView):
         context['sobre'] = Sobre.objects.all()
 
         context['tutorial'] = Tutorial.objects.filter(status='Published').order_by('-updated_on')[0:20]
+        context['tipo'] = Tipo.objects.all().order_by('id')
         context['categoria'] = Categoria.objects.all().order_by('name')
         context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
-
 
         context.update({
 
@@ -118,10 +128,16 @@ class TutorialView(HitCountDetailView, DetailView):
     def get_context_data(self, **kwargs):
         context = super(TutorialView, self).get_context_data(**kwargs)
         context['sobre'] = Sobre.objects.all()
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
 
         tut = Tutorial.objects.all()
         context['tut'] = tut
         context['categoria'] = Categoria.objects.all()
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
         context.update({
             "og_image": self.object.featured_image,
             "description": self.object.meta_description if self.object.meta_description else "",
@@ -143,6 +159,9 @@ class DownloadCode(HitCountDetailView, DetailView):
     def get_context_data(self, **kwargs):
         context = super(DownloadCode, self).get_context_data(**kwargs)
         context['sobre'] = Sobre.objects.all()
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
         context.update({
             "og_image": self.object.featured_image,
             "description": self.object.meta_description if self.object.meta_description else "",
@@ -175,6 +194,9 @@ class CategoryView(DetailView):
         context['sobre'] = Sobre.objects.all()
 
         context['tut'] = tut
+        context['tipo'] = Tipo.objects.all().order_by('id')
+        context['categoria'] = Categoria.objects.all().order_by('name')
+        context['categoria1'] = Categoria.objects.extra(select={'length':'Length(name)'}).order_by('length')
         context['categoria'] = Categoria.objects.all()
         context.update({
             "og_image": self.object.featured_image,

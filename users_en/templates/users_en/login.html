@@ -1,4 +1,4 @@
-{% extends "users/base.html" %}
+{% extends "users_en/base.html" %}
 {% block title %} Login Page {% endblock title%}
 {% block content %}
     <div class="form-content my-3 p-3">
@@ -27,7 +27,7 @@
                                 <div class="form-row">
                                     <div class="col-md-10 offset-md-1">
                                         <div class="form-group">
-                                            <label class="small mb-1">Nome de usuário</label>
+                                            <label class="small mb-1">Username</label>
                                             {{ form.username }}
                                         </div>
                                     </div>
@@ -45,14 +45,14 @@
                                         <div class="form-group">
                                             <!-- Add a Remember me functionality -->
                                             {{ form.remember_me }}
-                                            <label> Lembre de mim</label>
+                                            <label>Remember me</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-10 offset-md-1">
                                         <div class="form-group mt-0 mb-1">
-                                          <button name="login" class="col-md-12 btn btn-dark" id="login">Entrar</button>
+                                          <button name="login" class="col-md-12 btn btn-dark" id="login">Login</button>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="card-footer text-center">
                             <div class="small">
-                                <a href="{% url 'users-register' %}">Não tem uma conta ainda? Criar uma</a><br>
+                                <a href="{% url 'users-register_en' %}">Don't have an account yet? Create one</a><br>
                             </div>
                         </div>
                     </div>

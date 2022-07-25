@@ -1,6 +1,6 @@
-{% extends "base.html" %} {% load i18n %} {% load quiz_tags %} {% block title %}
-{{ quiz.title}} {% endblock %} {% block description %} {% trans "Resultados do
-exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
+{% extends "base_en.html" %} {% load i18n %} {% load quiz_tags %} {% block title %}
+{{ quiz.title}} {% endblock %} {% block description %} 
+{% trans "Results from exam for" %} {{ quiz.title }} {% endblock %} {% block content %}
 
 <section class="section mt-0">
   <div class="container">
@@ -8,26 +8,26 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
       <aside class="col-lg-4 order-2 order-lg-1 border-right">
         {% if previous.answers %}
 
-        <p class="muted"><small>{% trans "A pergunta anterior" %}:</small></p>
+        <p class="muted"><small>{% trans "The previous question" %}:</small></p>
         <p>{{ previous.previous_question }}</p>
         <p>
-          Sua resposta foi
+          His answer was
           <strong>
             {{ previous.previous_outcome|yesno:"correct,incorrect" }}
           </strong>
         </p>
-        {% include 'correct_answer.html' %}
-        <p class="mt-5"><strong>{% trans "Explicação" %}:</strong></p>
+        {%include 'correct_answer_en.html' %}
+        <p class="mt-5"><strong>{% trans "Explanation" %}:</strong></p>
         <hr>
-        <div class="well" >
+        <div class="well">
           <p>{{ previous.previous_question.explanation | safe }}</p>
         </div>
         <hr />
 
-        {% endif %} 
+        {% endif %}
         
        
-        <!--  block ads_2 -->
+        <!-- block ads_2 -->
         {% block ads_2 %} {% include 'theme/ads_2.html' %} {% endblock %}
       </aside>
 
@@ -35,35 +35,35 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
         {% if max_score %}
 
         <div>
-          <h2>{% trans "Resultados dos exames" %}</h2>
+          <h2>{% trans "Exam Results" %}</h2>
           <p>
-            <small class="muted">{% trans "Título do exame" %}: </small>
+            <small class="muted">{% trans "Exam title" %}: </small>
             <strong>{{ quiz.title }}</strong>
           </p>
 
           <p class="">
-            {% trans "Você respondeu" %} {{ score }} {% trans "perguntas corretamente fora" %} 
-            {{ max_score }}, {% trans "dando-lhe" %} <span class="badge bg-primary">{{percent }} %</span>
-            {% trans "por cento correto" %}
+            {% trans "You answered" %} {{ score }} {% trans "questions correctly out" %}
+            {{ max_score }}, {% trans "giving you" %} <span class="badge bg-primary">{{percent }} %</span>
+            {% trans "percent correct" %}
           </p>
 
           {% if quiz.pass_mark %}
           <hr />
-          <p class="">{{ sitting.result_message }}</p>
+          <p class="">{ { sitting.result_message }}</p>
           <hr />
 
           {% endif %}
 
           <p>
-            Revise as perguntas abaixo e tente o exame novamente no
-            futuro
+            Please review the questions below and try the exam again on
+            future
           </p>
 
           {% if user.is_authenticated %}
 
           <p>
-            O resultado deste exame será armazenado em sua seção de
-            progresso para que você possa revisar e monitorar sua progressão"
+            The result of this exam will be stored in your section of
+            progress so you can review and monitor your progress"
           </p>
 
           {% endif %}
@@ -76,8 +76,8 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
         {% if possible %}
 
         <p class="lead">
-          {% trans "A pontuação da sua sessão é" %} {{ session }} 
-          {% trans "fora de um possível" %} {{ possible }}
+          {% trans "Your session score is" %} {{ session }}
+          {% trans "out of a possible" %} {{ possible }}
         </p>
 
         <hr />
@@ -91,11 +91,11 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
 
         {% correct_answer_for_all question %} {% if question.user_answer %}
         <p>
-          {% trans "Sua Resposta" %}: {{ question|answer_choice_to_string:question.user_answer }}
+          {% trans "Your Answer" %}: {{ question|answer_choice_to_string:question.user_answer }}
         </p>
         {% endif %}
 
-        <p><strong>{% trans "Explicação" %}:</strong></p>
+        <p><strong>{% trans "Explanation" %}:</strong></p>
         <div class="well" style="background-color: #fcf8e3">
           <p>{{ question.explanation|safe }}</p>
         </div>
@@ -104,8 +104,8 @@ exame para" %} {{ quiz.title }} {% endblock %} {% block content %}
 
         {% endfor %} {% endif %}
 
-        <a type="button" class="btn btn-info btn-rounded btn-sm" href="{% url 'quiz_progress' %}">
-          Ver estatísticas dos meus resultados
+        <a type="button" class="btn btn-info btn-rounded btn-sm" href="{% url 'quiz_progress_en' %}">
+          See statistics of my results
         </a>
       </div>
     </div>
