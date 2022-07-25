@@ -3,28 +3,7 @@
 
 {% block content %}
 
-<!DOCTYPE html>
-<html>
 
-<head>
-	<title></title>
-	<meta id="meta" name="viewport"
-		content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-	<style type="text/css">
-		body {
-			background-color: #f0f0f0;
-
-		}
-	</style>
-</head>
-
-
-<body>
 	<div class="container">
 		{% if object.book_available is True %}
 		<div class="row">
@@ -124,8 +103,6 @@
 	<div class="mx-auto" style="width: 340px;">
 	<h4 class="text-danger">Sorry, this book is out of Stock !</h4>
 	{% endif %}
-</body>
 
-</html>
 
 {% endblock content %}
