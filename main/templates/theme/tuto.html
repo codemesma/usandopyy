@@ -4,7 +4,7 @@
     {% for t in tutorial %}
     <ul class="list-unstyled widget-list">
       <li class="media  align-items-center ">
-         <a href="{% url 'tutorial-view_en' t.slug %}">
+         <a href="{% url 'tutorial-view' t.slug %}">
             <img loading="lazy" class="img-fluid mr-2 "
                    src="{{ t.featured_image.url }}"
                  style="height:65px; object-fit: cover;">
