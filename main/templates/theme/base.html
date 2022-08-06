@@ -3,7 +3,7 @@
 {% load django_simple_cookie_consent_tags %}
 <!DOCTYPE html>
 
-<html lang="en-us">
+<html lang="pt-pt">
   <head>
     <meta charset="utf-8" />
     <title>{%block title %}UsandoPy {{ tutorialtitle }}{%endblock%}</title>
@@ -140,13 +140,13 @@
 
     <div class="container my-3">
       <div class="row">
-        <div class="col-lg-12 order-1 order-lg-1 mb-2 ">
-          <a type="button" class="btn btn-light btn-sn " href="{% url 'home-page' %}">Home</a>
-          <a type="button" class="btn btn-light btn-sn " href="{% url 'index' %}">Blog programação</a>
-          <a type="button" class="btn btn-light btn-sn " href="{% url 'newspaper:noticias' %}">Notícias de tecnologia</a>
-          <a type="button" class="btn btn-light btn-sn " href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
-          <a type="button" class="btn btn-light btn-sn " href="{% url 'list' %}">Livros | E-books | Guias</a>
-          <a type="button" class="btn btn-primary btn-sn " href="{% url 'home-page_en' %}">Change to English</a>
+        <div class="col-lg-12 order-1 order-lg-1 mb-2 "  >
+          <a style="font-size:13px;" type="button" class="btn btn-light btn-sn " href="{% url 'home-page' %}" >Home</a>
+          <a style="font-size:13px;" type="button" class="btn btn-light btn-sn " href="{% url 'index' %}">Blog programação</a>
+          <a style="font-size:13px;" type="button" class="btn btn-light btn-sn " href="{% url 'newspaper:noticias' %}">Notícias de tecnologia</a>
+          <a style="font-size:13px;" type="button" class="btn btn-light btn-sn " href="{% url 'quiz_index' %}">Testar o meu conhecimento</a>
+          <a style="font-size:13px;" type="button" class="btn btn-light btn-sn " href="{% url 'list' %}">Livros | E-books | Guias</a>
+          <a style="font-size:13px;" type="button" class="btn btn-primary btn-sn " href="{% url 'home-page_en' %}">Change to English</a>
         </div>
       </div>
     </div>
